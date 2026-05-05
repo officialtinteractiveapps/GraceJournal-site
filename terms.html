@@ -1,367 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - Grace Journal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
-            background: #000000;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        h1 {
-            color: white;
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-        }
-        
-        .effective-date {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 30px;
-            display: block;
-        }
-        
-        .intro {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 16px;
-            font-weight: 400;
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-        
-        h2 {
-            color: white;
-            margin-top: 48px;
-            margin-bottom: 20px;
-            font-size: 24px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        h2:before {
-            content: '';
-            width: 4px;
-            height: 24px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 2px;
-        }
-        
-        h3 {
-            color: rgba(255, 255, 255, 0.95);
-            margin-top: 32px;
-            margin-bottom: 16px;
-            font-size: 18px;
-            font-weight: 500;
-        }
-        
-        h4 {
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 24px;
-            margin-bottom: 12px;
-            font-size: 16px;
-            font-weight: 500;
-        }
-        
-        p {
-            margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 15px;
-            font-weight: 400;
-            line-height: 1.8;
-        }
-        
-        ul, ol {
-            margin-left: 24px;
-            margin-bottom: 20px;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 15px;
-            font-weight: 400;
-            line-height: 1.7;
-        }
-        
-        li strong {
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-        }
-        
-        /* Definition list styling */
-        .definitions-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 24px 0;
-        }
-        
-        .definition-item {
-            margin-bottom: 16px;
-        }
-        
-        .definition-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        .definition-term {
-            color: rgba(255, 255, 255, 0.95);
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-        
-        .definition-desc {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
-            padding-left: 16px;
-        }
-        
-        /* Special sections styling */
-        .info-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 24px 0;
-        }
-        
-        .highlight-section {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 24px;
-            margin: 32px 0;
-        }
-        
-        .contact-section {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 32px;
-            margin-top: 60px;
-            text-align: center;
-        }
-        
-        .contact-section h2 {
-            justify-content: center;
-            margin-top: 0;
-        }
-        
-        .contact-section h2:before {
-            display: none;
-        }
-        
-        a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: underline;
-            text-underline-offset: 2px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-        
-        a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-        
-        /* Subsection numbering */
-        .subsection-number {
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 600;
-            margin-right: 8px;
-        }
-        
-        /* Code/legal text styling */
-        .legal-text {
-            font-family: 'Courier New', monospace;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 13px;
-        }
-        
-        /* List with letters */
-        ol[type="a"] {
-            list-style-type: lower-alpha;
-        }
-        
-        /* Mobile responsiveness */
-        @media (max-width: 640px) {
-            .container {
-                padding: 24px 16px;
-            }
-            
-            h1 {
-                font-size: 28px;
-            }
-            
-            h2 {
-                font-size: 20px;
-            }
-            
-            h3 {
-                font-size: 17px;
-            }
-            
-            p, li {
-                font-size: 14px;
-            }
-        }
-        
-        /* Smooth scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Selection color */
-        ::selection {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — Grace Journal</title>
+<meta name="description" content="The terms that govern your use of Grace Journal.">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23141619'/><text x='16' y='23' font-family='Georgia,serif' font-size='20' font-style='italic' fill='%23F6F5F3' text-anchor='middle'>G</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..600,30..100&family=DM+Sans:wght@400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="legal.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Terms of Service</h1>
-        <span class="effective-date">Effective Date: August 16, 2025</span>
-        
-        <p class="intro">
-            These Terms of Service ("Terms") govern your access to and use of the Grace Journal mobile application and related services (the "App", "Service" or "Grace Journal") provided by Tinteractive Apps ("we", "us", "our"). By creating an account, accessing or using the App you agree to these Terms. If you do not accept them, do not use the App.
-        </p>
-        
-        <h2>1. Definitions</h2>
-        <div class="definitions-box">
-            <div class="definition-item">
-                <div class="definition-term">Account</div>
-                <div class="definition-desc">The account you create to use Grace Journal.</div>
-            </div>
-            <div class="definition-item">
-                <div class="definition-term">User Content</div>
-                <div class="definition-desc">Notes, devotionals, audio, images, feedback and any other content you upload, enter, store or create using the App.</div>
-            </div>
-            <div class="definition-item">
-                <div class="definition-term">AI Features</div>
-                <div class="definition-desc">Any feature that generates suggestions, notifications, or other outputs using automated machine learning or model-based services.</div>
-            </div>
-            <div class="definition-item">
-                <div class="definition-term">Service Providers</div>
-                <div class="definition-desc">Third-party providers we use to host and operate the App (for example Firebase).</div>
-            </div>
-        </div>
-        
-        <h2>2. Eligibility</h2>
-        <p><span class="subsection-number">2.1</span> You must be 13 years or older to create an Account. If you are under 13 you are not permitted to create or use an Account unless and only to the extent local law allows parental/guardian-managed accounts.</p>
-        <p><span class="subsection-number">2.2</span> Parents and guardians who create and manage Accounts for children accept responsibility for those Accounts and for ensuring compliance with these Terms.</p>
-        
-        <h2>3. Account Creation and Security</h2>
-        <p><span class="subsection-number">3.1</span> You must provide accurate registration information and keep it up to date.</p>
-        <p><span class="subsection-number">3.2</span> You are responsible for all activity that happens under your Account credentials. Keep your password and authentication methods secure and notify us immediately of suspected unauthorized use.</p>
-        <p><span class="subsection-number">3.3</span> We may suspend or limit access to Accounts where we reasonably suspect unauthorized access or abuse.</p>
-        
-        <h2>4. Description of Service; Changes; Beta Features</h2>
-        <p><span class="subsection-number">4.1</span> Grace Journal provides note-taking, verse-lookup/autocomplete (client-side), private sharing, note organization, optional AI-driven suggestions, and related features. Feature availability may vary by platform and app version.</p>
-        <p><span class="subsection-number">4.2</span> We may add, modify, or remove features at any time. Beta or experimental features may change or be discontinued without notice.</p>
-        <p><span class="subsection-number">4.3</span> We may place reasonable limits on usage to protect service quality or prevent abuse.</p>
-        
-        <h2>5. User Content — Ownership and License</h2>
-        <p><span class="subsection-number">5.1</span> You retain ownership of the intellectual property rights in your User Content.</p>
-        <p><span class="subsection-number">5.2</span> By uploading or submitting User Content you grant Tinteractive Apps a non-exclusive, worldwide, royalty-free license to host, cache, store, transmit, display and otherwise use that content only to provide, operate, maintain and improve the Service and to comply with applicable law. That license extends to our Service Providers solely to the extent necessary to provide the Service.</p>
-        <p><span class="subsection-number">5.3</span> When you delete User Content or your Account, we will stop making it available through the Service. Deleted content may remain temporarily in encrypted backups for disaster recovery (up to 30 days) but is not accessible or exportable. See Section 8.</p>
-        <p><span class="subsection-number">5.4</span> You represent and warrant that you have the rights necessary to upload and license the User Content under these Terms and that it does not infringe any third party rights.</p>
-        <p><span class="subsection-number">5.5</span> <strong>Prohibited content:</strong> you must not upload content that violates applicable law or these Terms, including content that is unlawful, pornographic, promotes violence or hatred, is defamatory, or invades privacy.</p>
-        
-        <h2>6. Prohibited Activities</h2>
-        <p>You agree not to, and will not permit others to, do any of the following while using the Service:</p>
-        <ol type="a">
-            <li>Access, tamper with, or use any non-public areas of the Service, our computer systems, or the systems of our Service Providers (including administrative interfaces or hidden APIs).</li>
-            <li>Probe, scan, test, or otherwise attempt to assess the vulnerability of any system or network, breach or circumvent security or authentication measures, or defeat access controls.</li>
-            <li>Decompile, reverse engineer, disassemble, decode, or otherwise attempt to discover the source code, object code, underlying structure, algorithms, trade secrets, or ideas of the Service, except to the limited extent required by law.</li>
-            <li>Modify, create derivative works of, rent, lease, sell, redistribute, sublicense, or otherwise exploit the Service or any portion of it for unauthorized commercial purposes.</li>
-            <li>Use robots, spiders, scrapers, crawlers, or other automated means to access, index, collect or harvest content from the Service (including any API) except via interfaces explicitly provided by us.</li>
-            <li>Attempt to access another user's Account or data, harvest credentials or personal data, or interfere with other users' use of the Service.</li>
-            <li>Interfere with, disrupt, degrade, or otherwise harm the operation of the Service or the experience of other users, including transmitting malware or other malicious code.</li>
-            <li>Circumvent any rate limits, usage controls, or other restrictions we place on the Service.</li>
-        </ol>
-        <p>We may monitor and audit use of the Service to detect compliance and may suspend or terminate access for violations.</p>
-        
-        <h2>7. AI Features, User Control and Data Use</h2>
-        <p><span class="subsection-number">7.1</span> <strong>Scope and purpose.</strong> AI Features (where available) are provided to deliver convenience and generate personalized devotional suggestions or notifications. AI output is provided for convenience only and is not professional, legal, medical, or theological advice.</p>
-        <p><span class="subsection-number">7.2</span> <strong>User control and opt-out.</strong> You may disable AI Features in App settings at any time. When disabled, no new AI prompts will be sent on your behalf. AI features are off by default for users who opt out.</p>
-        <p><span class="subsection-number">7.3</span> <strong>What is processed.</strong> AI processing occurs only on content that you actively and explicitly submit through an AI interface. We will not automatically extract or transmit your stored notes or other User Content for AI processing.</p>
-        <p><span class="subsection-number">7.4</span> <strong>Training and model improvement.</strong> Unless you explicitly opt in to a separate training program, content you submit through AI interfaces will not be used to train or improve our models or third-party models. If you opt in, we will make clear what data will be used and for what purpose.</p>
-        <p><span class="subsection-number">7.5</span> <strong>Responsibility.</strong> You are responsible for reviewing AI outputs before relying on them. We disclaim liability for reliance on or misuse of AI outputs.</p>
-        
-        <h2>8. Encryption, Storage, Backups and Device Security</h2>
-        <div class="highlight-section">
-            <p><span class="subsection-number">8.1</span> For technical details, see our Privacy Policy. This section provides a brief summary.</p>
-            <p><span class="subsection-number">8.2</span> <strong>Transport & server storage.</strong> Grace Journal transmits data over secure channels and stores note content on our servers and Service Providers encrypted at rest. We and our Service Providers store only encrypted representations of notes on servers and cannot decrypt those server-stored encrypted blobs.</p>
-            <p><span class="subsection-number">8.3</span> <strong>On-device storage.</strong> The App keeps a local copy of your notes on your device so you can edit and access them offline. Local device storage is protected by your device's security features (for example passcode, biometric lock, or operating system encryption).</p>
-            <p><span class="subsection-number">8.4</span> <strong>Backups and retention.</strong> Encrypted backups that may contain note data are retained for up to 30 days after deletion for disaster recovery. Deleted content is not available to other users or for export. See our Privacy Policy for details on how to request access to your data.</p>
-            <p><span class="subsection-number">8.5</span> <strong>Device compromise.</strong> We are not responsible for loss, disclosure, modification, or deletion of note content that results from device compromise (for example jailbreaking, rooting, installing untrusted software, or granting third-party apps access to your device storage).</p>
-            <p><span class="subsection-number">8.6</span> <strong>Data Export and Backups.</strong> Grace Journal allows you to export personal data currently stored in your account. Deleted notes are not available for export, even if they exist temporarily in backups retained for disaster recovery (up to 30 days). Backups are used solely to restore data in case of system failures and are not accessible to users. See the Privacy Policy for more details on how to request your data.</p>
-            <p style="margin-top: 20px; font-style: italic;">See the Privacy Policy for more technical detail and provider information.</p>
-        </div>
-        
-        <h2>9. Third-Party Content and Licenses</h2>
-        <p><span class="subsection-number">9.1</span> <strong>Third-party content.</strong> The App may include or integrate content supplied by third parties (for example Bible translations, commentary, or other licensed texts) that are subject to separate license terms and restrictions ("Third-Party Content").</p>
-        <p><span class="subsection-number">9.2</span> <strong>No sublicense or redistribution rights.</strong> The inclusion of Third-Party Content in the App for the purpose of providing a note-taking or devotional experience does not grant you any license to copy, reproduce, distribute, publicly display, create derivative works from, or otherwise redistribute that Third-Party Content outside the App. You may use Third-Party Content only as expressly permitted under the third party's license and these Terms. Any rights to access or view Third-Party Content are subject to the licensors' terms and may be revoked.</p>
-        <p><span class="subsection-number">9.3</span> <strong>Your responsibility for content you create or share.</strong> If you create notes that incorporate or reproduce Third-Party Content (for example quoting copyrighted Bible text in a note you share), you are solely responsible for ensuring that your use complies with the applicable third-party license (including any fair-use, quotation, or excerpt rules). You agree that Tinteractive Apps is not responsible for any claim arising from your reproduction, sharing, or other use of Third-Party Content.</p>
-        <p><span class="subsection-number">9.4</span> <strong>No warranty and limited availability.</strong> We do not guarantee the accuracy, completeness, availability or continued licensing of Third-Party Content. Third parties may change or revoke license terms, restrict use, or remove content at any time; we are not responsible for such changes. If you require details about a specific translation or licensor (including permitted uses or attribution requirements), contact support and consult the licensor's own terms.</p>
-        <p><span class="subsection-number">9.5</span> <strong>If you believe we are violating a license.</strong> If you believe a particular use of Third-Party Content in the Service violates a licensor's rights, please contact us at <a href="mailto:tinteractiveapps@gmail.com">tinteractiveapps@gmail.com</a> with the relevant details and we will investigate.</p>
-        
-        <h2>10. Payments, Upgrades and Refunds</h2>
-        <p><span class="subsection-number">10.1</span> <strong>Current pricing.</strong> As of the Effective Date the core App is provided in beta without a paid subscription. If we introduce paid features, pricing, trial periods and refund policies will be presented at the point of purchase. Payment processing and refunds will be subject to the terms of the relevant app store or payment processor.</p>
-        
-        <h2>11. Suspension, Termination and Account Cancellation</h2>
-        <p><span class="subsection-number">11.1</span> <strong>Grounds for suspension or termination.</strong> We may suspend or terminate an Account if you violate these Terms, engage in illegal activity, threaten Service security, or otherwise harm the Service or other users.</p>
-        <p><span class="subsection-number">11.2</span> <strong>Effect of termination.</strong> Upon termination you lose access to the Service. We may delete User Content as described in Section 8. Termination does not limit our right to pursue other legal remedies.</p>
-        
-        <h2>12. Disclaimers; Limitation of Liability</h2>
-        <p><span class="subsection-number">12.1</span> <strong>Disclaimers.</strong> To the fullest extent permitted by New Zealand law, the Service and all content are provided "AS IS" and "AS AVAILABLE" without warranties of any kind. We disclaim implied warranties, including fitness for a particular purpose.</p>
-        <p><span class="subsection-number">12.2</span> <strong>Limitation of liability.</strong> Except where prohibited by law (for example liability for personal injury or death caused by our negligence), our aggregate liability for any claim arising out of or related to the Service or these Terms will not exceed NZD $100. We will not be liable for indirect, incidental, special, consequential damages, loss of data, or loss of profits.</p>
-        
-        <h2>13. Changes to These Terms</h2>
-        <p>We may update these Terms from time to time to reflect changes in the Service or legal requirements. We will provide notice of material changes by email or in-app notice where practicable. Continued use after notice constitutes acceptance of the updated Terms.</p>
-        
-        <h2>14. Governing Law; Disputes</h2>
-        <p>These Terms are governed by the laws of New Zealand. You agree to the non-exclusive jurisdiction of the courts of New Zealand to resolve disputes.</p>
-        
-        <h2>15. Miscellaneous</h2>
-        <p><span class="subsection-number">15.1</span> <strong>Entire agreement.</strong> These Terms, together with the Privacy Policy and any in-app notices, constitute the entire agreement.</p>
-        <p><span class="subsection-number">15.2</span> <strong>Assignment.</strong> We may assign or transfer our rights under these Terms to an affiliate or successor; we will notify you of material assignments.</p>
-        <p><span class="subsection-number">15.3</span> <strong>Severability.</strong> If any provision is invalid or unenforceable, the remainder remains effective.</p>
-        
-        <div class="contact-section">
-            <h2>Contact Us</h2>
-            <p>If you have questions or concerns about this policy, contact:</p>
-            <p>Email: <a href="mailto:tinteractiveapps@gmail.com">tinteractiveapps@gmail.com</a></p>
-        </div>
+
+<div class="container">
+
+  <header class="page-header">
+    <a href="index.html" class="wordmark">Grace Journal</a>
+    <a href="index.html" class="back-link">Home</a>
+  </header>
+
+  <div class="title-block">
+    <h1 class="page-title">Terms of <em>Service</em></h1>
+    <span class="effective">Effective · 16 August 2025</span>
+  </div>
+
+  <p class="lede">
+    These Terms of Service (&ldquo;Terms&rdquo;) govern your access to and use of the Grace Journal mobile application and related services (the &ldquo;App&rdquo;, &ldquo;Service&rdquo; or &ldquo;Grace Journal&rdquo;) provided by Tinteractive Apps (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;). By creating an account, accessing or using the App you agree to these Terms. If you do not accept them, do not use the App.
+  </p>
+
+  <section>
+    <h2><span class="num">1</span>Definitions</h2>
+    <ul class="defs-list">
+      <li>
+        <span class="defs-term">Account</span>
+        <span class="defs-desc">The account you create to use Grace Journal.</span>
+      </li>
+      <li>
+        <span class="defs-term">User Content</span>
+        <span class="defs-desc">Notes, devotionals, audio, images, feedback and any other content you upload, enter, store or create using the App.</span>
+      </li>
+      <li>
+        <span class="defs-term">AI Features</span>
+        <span class="defs-desc">Any feature that generates suggestions, notifications, or other outputs using automated machine learning or model-based services.</span>
+      </li>
+      <li>
+        <span class="defs-term">Service Providers</span>
+        <span class="defs-desc">Third-party providers we use to host and operate the App (for example Firebase).</span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>Eligibility</h2>
+    <p><span class="sub">2.1</span>You must be 13 years or older to create an Account. If you are under 13 you are not permitted to create or use an Account unless and only to the extent local law allows parental/guardian-managed accounts.</p>
+    <p><span class="sub">2.2</span>Parents and guardians who create and manage Accounts for children accept responsibility for those Accounts and for ensuring compliance with these Terms.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">3</span>Account Creation and Security</h2>
+    <p><span class="sub">3.1</span>You must provide accurate registration information and keep it up to date.</p>
+    <p><span class="sub">3.2</span>You are responsible for all activity that happens under your Account credentials. Keep your password and authentication methods secure and notify us immediately of suspected unauthorized use.</p>
+    <p><span class="sub">3.3</span>We may suspend or limit access to Accounts where we reasonably suspect unauthorized access or abuse.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">4</span>Description of Service; Changes; Beta Features</h2>
+    <p><span class="sub">4.1</span>Grace Journal provides note-taking, verse-lookup/autocomplete (client-side), private sharing, note organization, optional AI-driven suggestions, and related features. Feature availability may vary by platform and app version.</p>
+    <p><span class="sub">4.2</span>We may add, modify, or remove features at any time. Beta or experimental features may change or be discontinued without notice.</p>
+    <p><span class="sub">4.3</span>We may place reasonable limits on usage to protect service quality or prevent abuse.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">5</span>User Content — Ownership and License</h2>
+
+    <span class="ann ann-blue">you own your words ✦</span>
+
+    <p><span class="sub">5.1</span>You retain ownership of the intellectual property rights in your User Content.</p>
+    <p><span class="sub">5.2</span>By uploading or submitting User Content you grant Tinteractive Apps a non-exclusive, worldwide, royalty-free license to host, cache, store, transmit, display and otherwise use that content only to provide, operate, maintain and improve the Service and to comply with applicable law. That license extends to our Service Providers solely to the extent necessary to provide the Service.</p>
+    <p><span class="sub">5.3</span>When you delete User Content or your Account, we will stop making it available through the Service. Deleted content may remain temporarily in encrypted backups for disaster recovery (up to 30 days) but is not accessible or exportable. See Section 8.</p>
+    <p><span class="sub">5.4</span>You represent and warrant that you have the rights necessary to upload and license the User Content under these Terms and that it does not infringe any third party rights.</p>
+    <p><span class="sub">5.5</span><strong>Prohibited content:</strong> you must not upload content that violates applicable law or these Terms, including content that is unlawful, pornographic, promotes violence or hatred, is defamatory, or invades privacy.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">6</span>Prohibited Activities</h2>
+    <p>You agree not to, and will not permit others to, do any of the following while using the Service:</p>
+    <ol type="a">
+      <li>Access, tamper with, or use any non-public areas of the Service, our computer systems, or the systems of our Service Providers (including administrative interfaces or hidden APIs).</li>
+      <li>Probe, scan, test, or otherwise attempt to assess the vulnerability of any system or network, breach or circumvent security or authentication measures, or defeat access controls.</li>
+      <li>Decompile, reverse engineer, disassemble, decode, or otherwise attempt to discover the source code, object code, underlying structure, algorithms, trade secrets, or ideas of the Service, except to the limited extent required by law.</li>
+      <li>Modify, create derivative works of, rent, lease, sell, redistribute, sublicense, or otherwise exploit the Service or any portion of it for unauthorized commercial purposes.</li>
+      <li>Use robots, spiders, scrapers, crawlers, or other automated means to access, index, collect or harvest content from the Service (including any API) except via interfaces explicitly provided by us.</li>
+      <li>Attempt to access another user&rsquo;s Account or data, harvest credentials or personal data, or interfere with other users&rsquo; use of the Service.</li>
+      <li>Interfere with, disrupt, degrade, or otherwise harm the operation of the Service or the experience of other users, including transmitting malware or other malicious code.</li>
+      <li>Circumvent any rate limits, usage controls, or other restrictions we place on the Service.</li>
+    </ol>
+    <p>We may monitor and audit use of the Service to detect compliance and may suspend or terminate access for violations.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">7</span>AI Features, User Control and Data Use</h2>
+    <p><span class="sub">7.1</span><strong>Scope and purpose.</strong> AI Features (where available) are provided to deliver convenience and generate personalized devotional suggestions or notifications. AI output is provided for convenience only and is not professional, legal, medical, or theological advice.</p>
+    <p><span class="sub">7.2</span><strong>User control and opt-out.</strong> You may disable AI Features in App settings at any time. When disabled, no new AI prompts will be sent on your behalf. AI features are off by default for users who opt out.</p>
+    <p><span class="sub">7.3</span><strong>What is processed.</strong> AI processing occurs only on content that you actively and explicitly submit through an AI interface. We will not automatically extract or transmit your stored notes or other User Content for AI processing.</p>
+    <p><span class="sub">7.4</span><strong>Training and model improvement.</strong> Unless you explicitly opt in to a separate training program, content you submit through AI interfaces will not be used to train or improve our models or third-party models. If you opt in, we will make clear what data will be used and for what purpose.</p>
+    <p><span class="sub">7.5</span><strong>Responsibility.</strong> You are responsible for reviewing AI outputs before relying on them. We disclaim liability for reliance on or misuse of AI outputs.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">8</span>Encryption, Storage, Backups and Device Security</h2>
+    <div class="callout">
+      <p><span class="sub">8.1</span>For technical details, see our <a href="privacy.html">Privacy Policy</a>. This section provides a brief summary.</p>
+      <p><span class="sub">8.2</span><strong>Transport &amp; server storage.</strong> Grace Journal transmits data over secure channels and stores note content on our servers and Service Providers encrypted at rest. We and our Service Providers store only encrypted representations of notes on servers and cannot decrypt those server-stored encrypted blobs.</p>
+      <p><span class="sub">8.3</span><strong>On-device storage.</strong> The App keeps a local copy of your notes on your device so you can edit and access them offline. Local device storage is protected by your device&rsquo;s security features (for example passcode, biometric lock, or operating system encryption).</p>
+      <p><span class="sub">8.4</span><strong>Backups and retention.</strong> Encrypted backups that may contain note data are retained for up to 30 days after deletion for disaster recovery. Deleted content is not available to other users or for export. See our <a href="privacy.html">Privacy Policy</a> for details on how to request access to your data.</p>
+      <p><span class="sub">8.5</span><strong>Device compromise.</strong> We are not responsible for loss, disclosure, modification, or deletion of note content that results from device compromise (for example jailbreaking, rooting, installing untrusted software, or granting third-party apps access to your device storage).</p>
+      <p><span class="sub">8.6</span><strong>Data Export and Backups.</strong> Grace Journal allows you to export personal data currently stored in your account. Deleted notes are not available for export, even if they exist temporarily in backups retained for disaster recovery (up to 30 days). Backups are used solely to restore data in case of system failures and are not accessible to users. See the <a href="privacy.html">Privacy Policy</a> for more details on how to request your data.</p>
     </div>
+  </section>
+
+  <section>
+    <h2><span class="num">9</span>Third-Party Content and Licenses</h2>
+    <p><span class="sub">9.1</span><strong>Third-party content.</strong> The App may include or integrate content supplied by third parties (for example Bible translations, commentary, or other licensed texts) that are subject to separate license terms and restrictions (&ldquo;Third-Party Content&rdquo;).</p>
+    <p><span class="sub">9.2</span><strong>No sublicense or redistribution rights.</strong> The inclusion of Third-Party Content in the App for the purpose of providing a note-taking or devotional experience does not grant you any license to copy, reproduce, distribute, publicly display, create derivative works from, or otherwise redistribute that Third-Party Content outside the App. You may use Third-Party Content only as expressly permitted under the third party&rsquo;s license and these Terms. Any rights to access or view Third-Party Content are subject to the licensors&rsquo; terms and may be revoked.</p>
+    <p><span class="sub">9.3</span><strong>Your responsibility for content you create or share.</strong> If you create notes that incorporate or reproduce Third-Party Content (for example quoting copyrighted Bible text in a note you share), you are solely responsible for ensuring that your use complies with the applicable third-party license (including any fair-use, quotation, or excerpt rules). You agree that Tinteractive Apps is not responsible for any claim arising from your reproduction, sharing, or other use of Third-Party Content.</p>
+    <p><span class="sub">9.4</span><strong>No warranty and limited availability.</strong> We do not guarantee the accuracy, completeness, availability or continued licensing of Third-Party Content. Third parties may change or revoke license terms, restrict use, or remove content at any time; we are not responsible for such changes. If you require details about a specific translation or licensor (including permitted uses or attribution requirements), contact support and consult the licensor&rsquo;s own terms.</p>
+    <p><span class="sub">9.5</span><strong>If you believe we are violating a license.</strong> If you believe a particular use of Third-Party Content in the Service violates a licensor&rsquo;s rights, please contact us at <a href="mailto:tinteractiveapps@gmail.com">tinteractiveapps@gmail.com</a> with the relevant details and we will investigate.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">10</span>Payments, Upgrades and Refunds</h2>
+    <p><span class="sub">10.1</span><strong>Current pricing.</strong> As of the Effective Date the core App is provided in beta without a paid subscription. If we introduce paid features, pricing, trial periods and refund policies will be presented at the point of purchase. Payment processing and refunds will be subject to the terms of the relevant app store or payment processor.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">11</span>Suspension, Termination and Account Cancellation</h2>
+    <p><span class="sub">11.1</span><strong>Grounds for suspension or termination.</strong> We may suspend or terminate an Account if you violate these Terms, engage in illegal activity, threaten Service security, or otherwise harm the Service or other users.</p>
+    <p><span class="sub">11.2</span><strong>Effect of termination.</strong> Upon termination you lose access to the Service. We may delete User Content as described in Section 8. Termination does not limit our right to pursue other legal remedies.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">12</span>Disclaimers; Limitation of Liability</h2>
+    <p><span class="sub">12.1</span><strong>Disclaimers.</strong> To the fullest extent permitted by New Zealand law, the Service and all content are provided &ldquo;AS IS&rdquo; and &ldquo;AS AVAILABLE&rdquo; without warranties of any kind. We disclaim implied warranties, including fitness for a particular purpose.</p>
+    <p><span class="sub">12.2</span><strong>Limitation of liability.</strong> Except where prohibited by law (for example liability for personal injury or death caused by our negligence), our aggregate liability for any claim arising out of or related to the Service or these Terms will not exceed NZD $100. We will not be liable for indirect, incidental, special, consequential damages, loss of data, or loss of profits.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">13</span>Changes to These Terms</h2>
+    <p>We may update these Terms from time to time to reflect changes in the Service or legal requirements. We will provide notice of material changes by email or in-app notice where practicable. Continued use after notice constitutes acceptance of the updated Terms.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">14</span>Governing Law; Disputes</h2>
+    <p>These Terms are governed by the laws of New Zealand. You agree to the non-exclusive jurisdiction of the courts of New Zealand to resolve disputes.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">15</span>Miscellaneous</h2>
+    <p><span class="sub">15.1</span><strong>Entire agreement.</strong> These Terms, together with the <a href="privacy.html">Privacy Policy</a> and any in-app notices, constitute the entire agreement.</p>
+    <p><span class="sub">15.2</span><strong>Assignment.</strong> We may assign or transfer our rights under these Terms to an affiliate or successor; we will notify you of material assignments.</p>
+    <p><span class="sub">15.3</span><strong>Severability.</strong> If any provision is invalid or unenforceable, the remainder remains effective.</p>
+  </section>
+
+  <div class="contact">
+    <h2>Contact Us</h2>
+    <p>If you have questions or concerns about these terms, get in touch.</p>
+    <p><strong>Email</strong> · <a href="mailto:tinteractiveapps@gmail.com">tinteractiveapps@gmail.com</a></p>
+  </div>
+
+  <footer class="page-footer">
+    <span>© 2026 Grace Journal</span>
+    <nav class="footer-links" aria-label="Legal">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="feedback.html">Feedback</a>
+    </nav>
+  </footer>
+
+</div>
+
 </body>
 </html>

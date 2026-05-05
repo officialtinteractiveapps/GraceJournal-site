@@ -20,24 +20,31 @@ function tick() {
 tick();
 setInterval(tick, 1000);
 
-/* Position the verse annotations under the actual GRACE word, and
-   dynamically size the curved arrow so its tip always sits a consistent
-   distance below GRACE regardless of how the verse wraps.
+/* Position + size the curved arrow that points up at GRACE.
 
-   The horizontal piece (--grace-x) is what aligns the arrow + "the heart
-   of it" handwriting under GRACE.
+   Two things move with the layout:
 
-   The vertical piece is more interesting: a fixed-height arrow looks fine
-   on desktop (one-line verse) but on narrow screens the verse wraps to
-   two lines, GRACE moves up, and the tip ends up crowding the word. So
-   we measure GRACE.bottom each time and recompute:
-     - --arrow-top:    where the SVG's top edge sits (just below GRACE)
-     - --arrow-height: how tall the SVG is (so its tail stays anchored at
-                       wrap.bottom + 1rem, matching the original look)
+   1. Horizontal — `--grace-x` is set to GRACE's center-x (relative to
+      .verse-wrap). Both the arrow and the "the heart of it" handwriting
+      use this so they always sit in GRACE's column.
 
-   The SVG's viewBox is also re-set to 1:1 with pixel dimensions, so the
-   arrowhead at viewBox y=6..14 stays exactly 8px tall in pixels no matter
-   how long the arrow gets. Only the curved line redraws. */
+   2. Vertical — the arrow's tip is anchored to the GAP between the
+      verse text and the cite (i.e. the cite's `margin-top` area). NOT
+      to GRACE.bottom. When the verse wraps to multiple lines, GRACE
+      sits on line 1 with text on line 2 immediately below it — placing
+      the tip "just below GRACE" puts it INSIDE that line 2 text (the
+      tip ends up kissing "is made…"). The cite sits below the entire
+      verse with a comfortable 1.1rem margin above it, so anchoring
+      there keeps the tip in clear empty space regardless of line count.
+
+      The tail still anchors to wrap.bottom + 1rem (matching the
+      original look), so the arrow simply grows taller on narrow
+      screens — the diagonal hook gets longer, still pointing at GRACE.
+
+   The SVG's viewBox is re-set to 1:1 with pixel dimensions on every
+   measurement, so the arrowhead at viewBox y=6..14 stays exactly 8px
+   tall in pixels regardless of arrow length. Only the curved line
+   (paths[0]) gets redrawn; the arrowhead (paths[1]) is untouched. */
 function positionVerseAnnotation() {
   const word = document.getElementById('grace-word');
   if (!word) return;
@@ -47,34 +54,35 @@ function positionVerseAnnotation() {
   const wordRect = word.getBoundingClientRect();
   const wrapRect = wrap.getBoundingClientRect();
 
-  // Center-x of GRACE → drives both the arrow's horizontal position
-  // and the "the heart of it" annotation underneath it.
   const centerX = (wordRect.left + wordRect.width / 2) - wrapRect.left;
-  // Bottom-y of GRACE → drives the arrow's tip position.
-  const bottomY = wordRect.bottom - wrapRect.top;
   wrap.style.setProperty('--grace-x', centerX + 'px');
 
   const arrow = wrap.querySelector('.ann-arrow-verse');
   if (!arrow) return;
 
+  // Anchor the tip 6px above the cite — that's inside the cite's top
+  // margin, comfortably below the last verse line and above the cite
+  // text. Falls back to "12px below GRACE" if the cite somehow isn't
+  // there (e.g. someone restructures the markup).
+  const cite = wrap.querySelector('.verse cite');
+  const tipY = cite
+    ? (cite.getBoundingClientRect().top - wrapRect.top) - 6
+    : (wordRect.bottom - wrapRect.top) + 12;
+
   const TIP_INSET     = 6;   // arrowhead tip y-coord inside the path
-  const TOP_GAP       = 6;   // SVG.top sits this many px below GRACE.bottom
   const TAIL_OVERHANG = 16;  // matches CSS bottom: -1rem
 
-  const arrowTop    = bottomY + TOP_GAP;
+  const arrowTop    = tipY - TIP_INSET;
   const arrowBottom = wrapRect.height + TAIL_OVERHANG;
   const arrowHeight = Math.max(40, arrowBottom - arrowTop);
 
   wrap.style.setProperty('--arrow-top', arrowTop + 'px');
   wrap.style.setProperty('--arrow-height', arrowHeight + 'px');
 
-  // 1:1 viewBox-to-pixel mapping → arrowhead stays a fixed pixel size.
   arrow.setAttribute('viewBox', `0 0 55 ${arrowHeight}`);
 
   // Redraw the curved line to span the new height. Control points scale
-  // proportionally so the curve keeps roughly the same shape — a soft
-  // hook from the bottom-right up to the tip on the upper-left.
-  // Arrowhead path (paths[1]) is fixed at the top and doesn't change.
+  // proportionally so the curve keeps its soft-hook shape.
   const paths = arrow.querySelectorAll('path');
   if (paths[0]) {
     const sy = arrowHeight - 5;        // tail just inside the bottom edge

@@ -21,24 +21,31 @@ function tick() {
 tick();
 setInterval(tick, 1000);
 
-/* Position the verse annotations under the actual GRACE word.
-   We measure the word's center-x relative to its verse-wrap parent
+/* Position the verse annotations under the actual verse reference.
+   We measure the reference's center-x relative to its verse-wrap parent
    and write it to a CSS variable. This keeps the arrow + "the heart
-   of it" aligned with GRACE no matter how the verse wraps. */
+   of it" aligned with the cite no matter how the verse wraps. */
 function positionVerseAnnotation() {
-  const word = document.getElementById('grace-word');
-  if (!word) return;
-  const wrap = word.closest('.verse-wrap');
+  const reference = document.getElementById('verse-reference');
+  if (!reference) return;
+  const wrap = reference.closest('.verse-wrap');
   if (!wrap) return;
-  const wordRect = word.getBoundingClientRect();
+  const referenceRect = reference.getBoundingClientRect();
   const wrapRect = wrap.getBoundingClientRect();
-  const centerX = (wordRect.left + wordRect.width / 2) - wrapRect.left;
-  wrap.style.setProperty('--grace-x', centerX + 'px');
+  const centerX = (referenceRect.left + referenceRect.width / 2) - wrapRect.left;
+  const arrowTop = (referenceRect.bottom - wrapRect.top) + 2;
+  const arrowBottom = -16;
+  const arrowHeight = Math.max(36, wrapRect.height - arrowTop - arrowBottom);
+
+  wrap.style.setProperty('--verse-reference-x', centerX + 'px');
+  wrap.style.setProperty('--arrow-top', arrowTop + 'px');
+  wrap.style.setProperty('--arrow-bottom', arrowBottom + 'px');
+  wrap.style.setProperty('--arrow-height', arrowHeight + 'px');
 }
 
 positionVerseAnnotation();
 window.addEventListener('resize', positionVerseAnnotation);
-/* Re-measure once fonts have loaded — the word's width changes when
+/* Re-measure once fonts have loaded — the reference's width changes when
    Fraunces swaps in, and we want the arrow under the final layout. */
 if (document.fonts && document.fonts.ready) {
   document.fonts.ready.then(positionVerseAnnotation);

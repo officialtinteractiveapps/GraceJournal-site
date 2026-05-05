@@ -231,6 +231,16 @@ main {
 .ul-coral::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M 1 6 Q 10 2, 20 5 T 40 5 T 60 4 T 80 6 T 99 5' stroke='%23FCA5A5' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
 }
+.ul-blue::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M 1 6 Q 10 2, 20 5 T 40 5 T 60 4 T 80 6 T 99 5' stroke='%2393C5FD' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.ul-double::after {
+  height: 0.7em;
+  bottom: -0.32em;
+}
+.ul-double.ul-blue::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'%3E%3Cpath d='M 1 5 Q 10 1, 20 4 T 40 4 T 60 3 T 80 5 T 99 4' stroke='%2393C5FD' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M 1 11 Q 10 7, 20 10 T 40 10 T 60 9 T 80 11 T 99 10' stroke='%2393C5FD' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
 /* When .ul is applied to an em (e.g. headline italic), preserve the italic */
 em.ul { font-style: italic; }
 
@@ -288,14 +298,14 @@ em.ul { font-style: italic; }
   pointer-events: none;
 }
 
-/* Annotation below the verse — arrow points up at "GRACE".
-   --grace-x is set by JS to the actual center-x of the circled word
-   in pixels (relative to verse-wrap). Falls back to 14% if JS hasn't
+/* Annotation below the verse — arrow points up at the verse reference.
+   --verse-reference-x is set by JS to the actual center-x of the cite
+   in pixels (relative to verse-wrap). Falls back to 70% if JS hasn't
    measured yet — close enough for the initial paint. */
 .ann-verse {
   position: absolute;
-  bottom: -3rem;
-  left: var(--grace-x, 14%);
+  bottom: -3.45rem;
+  left: var(--verse-reference-x, 70%);
   font-size: 1.3rem;
   color: var(--blue);
   transform: translateX(-50%) rotate(-3deg);
@@ -303,21 +313,21 @@ em.ul { font-style: italic; }
   white-space: nowrap;
 }
 
-/* Arrow connecting "the heart of it" to GRACE.
+/* Arrow connecting "the heart of it" to the verse reference.
    --arrow-top + --arrow-height are set by JS so the tip always sits a
-   consistent ~12px below GRACE regardless of how the verse wraps. The
+   consistent ~12px below the reference regardless of how the verse wraps. The
    tail still anchors to wrap.bottom + 1rem, matching the original look.
    CSS fallbacks (auto / 70px / -1rem) keep things sensible if JS hasn't
    run yet — the page paints fine before measurement. */
 .ann-arrow-verse {
   position: absolute;
   top: var(--arrow-top, auto);
-  bottom: -1rem;
+  bottom: var(--arrow-bottom, -1rem);
   /* Arrow base path point is at viewBox x=32 in 55-wide SVG.
-     Offset by -32px from --grace-x so the base sits exactly at the
-     center of GRACE — same vertical axis as the text below. */
-  left: calc(var(--grace-x, 14%) - 32px);
-  width: 55px;
+     Offset by -32px from --verse-reference-x so the base sits exactly at the
+     center of the reference — same vertical axis as the text below. */
+  left: calc(var(--verse-reference-x, 70%) - 32px);
+  width: 60px;
   height: var(--arrow-height, 70px);
   color: var(--blue);
   z-index: 3;
@@ -450,7 +460,6 @@ footer              { animation-delay: 1.4s; }
 
   .ann-footer { display: none; }
 
-  header .meta { display: none; }
 }
 
 @media (max-width: 360px) {

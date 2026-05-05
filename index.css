@@ -1,0 +1,453 @@
+:root {
+  --bg: #141619;
+  --ink: #F6F5F3;
+  --ink-soft: rgba(246, 245, 243, 0.62);
+  --ink-faint: rgba(246, 245, 243, 0.28);
+
+  --purple: #C4B5FD;
+  --pink: #F9A8D4;
+  --yellow: #FCD34D;
+  --blue: #93C5FD;
+  --sage: #86EFAC;
+  --coral: #FCA5A5;
+
+  --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --hand: 'Caveat', 'Bradley Hand', cursive;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { background: var(--bg); }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Faint film grain on the dark background — gives it texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Hidden SVG defs — turbulence filter that gives clean SVG paths a hand-drawn wobble */
+.defs {
+  position: absolute;
+  width: 0; height: 0;
+  pointer-events: none;
+}
+
+/* ───── Header ───── */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  z-index: 2;
+  position: relative;
+}
+
+.wordmark {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 350;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+  font-variation-settings: 'opsz' 24, 'SOFT' 80;
+}
+
+.meta {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ───── Main ───── */
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: clamp(3.5rem, 9vh, 6rem);
+  padding: clamp(3rem, 10vh, 6rem) 0;
+  z-index: 2;
+  position: relative;
+}
+
+.headline {
+  font-family: var(--serif);
+  font-weight: 350;
+  font-size: clamp(2.25rem, 6vw, 4.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  max-width: 14em;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+}
+
+.headline em {
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+
+/* Wrapper around headline (kept for layout consistency) */
+.headline-wrap {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+}
+
+/* ───── Countdown ───── */
+.countdown-section {
+  position: relative;
+  padding: 3.5rem 0 0.5rem;
+  width: min(100%, 38rem);
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 4vw, 3rem);
+  align-items: baseline;
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.num {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  font-variation-settings: 'opsz' 144, 'SOFT' 0;
+}
+
+.label {
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.countdown-date {
+  margin-top: 1.75rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 350;
+  font-size: 1rem;
+  color: var(--ink-soft);
+  text-align: center;
+  font-variation-settings: 'opsz' 24, 'SOFT' 100;
+}
+
+/* ───── Verse ───── */
+.verse-wrap {
+  position: relative;
+  max-width: 32em;
+}
+
+.verse {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 24, 'SOFT' 100;
+}
+
+.verse cite {
+  display: block;
+  margin-top: 1.1rem;
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ───── Inline annotations ───── */
+
+/* Highlighted word — subtle colored background */
+.hl {
+  padding: 0.05em 0.32em;
+  margin: 0 -0.05em;
+  border-radius: 3px;
+  font-style: normal;
+}
+.hl-purple { background: rgba(196, 181, 253, 0.18); color: var(--purple); }
+
+/* Wavy hand-drawn underline */
+.ul {
+  position: relative;
+  display: inline-block;
+  font-style: normal;
+}
+.ul::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  bottom: -0.18em;
+  height: 0.4em;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+.ul-pink::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M 1 6 Q 10 2, 20 5 T 40 5 T 60 4 T 80 6 T 99 5' stroke='%23F9A8D4' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.ul-coral::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M 1 6 Q 10 2, 20 5 T 40 5 T 60 4 T 80 6 T 99 5' stroke='%23FCA5A5' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+/* When .ul is applied to an em (e.g. headline italic), preserve the italic */
+em.ul { font-style: italic; }
+
+/* Hand-drawn circle around a word — for "GRACE" in the verse.
+   The ellipse SVG is generated to look like it was scribbled around
+   the word with a pen — slightly imperfect, slightly larger than the text.
+   The word keeps its inherited color; the blue circle does the highlighting,
+   matching the blue "the heart of it." annotation below. */
+.circled {
+  position: relative;
+  display: inline-block;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.05em 0.45em 0.05em 0.4em;
+}
+.circled::after {
+  content: '';
+  position: absolute;
+  inset: -0.18em -0.05em -0.18em -0.05em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 50' preserveAspectRatio='none'%3E%3Cpath d='M 60 3 C 100 3, 117 12, 117 25 C 117 40, 95 47, 60 47 C 22 47, 4 39, 3 25 C 2 11, 25 3, 60 3.5' stroke='%2393C5FD' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+/* ───── Handwritten annotations ───── */
+.ann {
+  font-family: var(--hand);
+  font-weight: 400;
+  line-height: 1.15;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Annotation hovering above the countdown — arrow lands on the DAYS column */
+.ann-countdown {
+  position: absolute;
+  top: -3rem;
+  left: 0;
+  font-size: 1.4rem;
+  color: var(--yellow);
+  transform: rotate(-3deg);
+  z-index: 3;
+}
+
+.ann-arrow-countdown {
+  position: absolute;
+  top: -1.5rem;
+  left: 4%;
+  width: 75px;
+  height: 75px;
+  color: var(--yellow);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Annotation below the verse — arrow points up at "GRACE".
+   --grace-x is set by JS to the actual center-x of the circled word
+   in pixels (relative to verse-wrap). Falls back to 14% if JS hasn't
+   measured yet — close enough for the initial paint. */
+.ann-verse {
+  position: absolute;
+  bottom: -3rem;
+  left: var(--grace-x, 14%);
+  font-size: 1.3rem;
+  color: var(--blue);
+  transform: translateX(-50%) rotate(-3deg);
+  z-index: 3;
+  white-space: nowrap;
+}
+
+.ann-arrow-verse {
+  position: absolute;
+  bottom: -1rem;
+  /* Arrow base path point is at viewBox x=32 in 55-wide SVG.
+     Offset by -32px from --grace-x so the base sits exactly at the
+     center of GRACE — same vertical axis as the text below. */
+  left: calc(var(--grace-x, 14%) - 32px);
+  width: 55px;
+  height: 70px;
+  color: var(--blue);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Footer annotation */
+.ann-footer {
+  position: absolute;
+  top: -1.6rem;
+  right: 0;
+  font-size: 1.05rem;
+  color: var(--sage);
+  transform: rotate(-2deg);
+  z-index: 3;
+  white-space: nowrap;
+}
+
+/* ───── Footer ───── */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  z-index: 2;
+  position: relative;
+}
+
+.nav-links {
+  display: flex;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  position: relative;
+}
+
+footer a {
+  color: var(--ink);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+footer a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+footer a:hover::after,
+footer a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+footer a:focus-visible {
+  outline: 1px dashed var(--ink-faint);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* ───── Page-load animation (staggered fade-up) ───── */
+header, .headline, .countdown-section, .verse-wrap, footer {
+  opacity: 0;
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+header              { animation-delay: 0.1s; }
+.headline           { animation-delay: 0.35s; }
+.countdown-section  { animation-delay: 0.7s; }
+.verse-wrap         { animation-delay: 1.1s; }
+footer              { animation-delay: 1.4s; }
+
+/* Annotations scribble in slightly after their parent */
+.ann, .ann-arrow-countdown, .ann-arrow-verse {
+  opacity: 0;
+  animation: scribble 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.ann-countdown,
+.ann-arrow-countdown { animation-delay: 1.3s; }
+.ann-verse,
+.ann-arrow-verse     { animation-delay: 1.7s; }
+.ann-footer          { animation-delay: 2s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scribble {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ───── Mobile adjustments ───── */
+@media (max-width: 560px) {
+  .countdown {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+  .num { font-size: clamp(2rem, 11vw, 3rem); }
+  .label { font-size: 0.6rem; letter-spacing: 0.14em; }
+
+  /* Annotations stay visible on mobile; countdown arrow scaled to fit narrower columns */
+  .ann-countdown { font-size: 1.1rem; left: 0; top: -2rem; }
+  .ann-arrow-countdown {
+    top: -0.5rem;
+    left: 2%;
+    width: 50px;
+    height: 50px;
+  }
+
+  .ann-verse { font-size: 1.05rem; bottom: -2.5rem; }
+  /* verse arrow keeps desktop sizing — fits mobile fine */
+
+  .ann-footer { display: none; }
+
+  header .meta { display: none; }
+}
+
+@media (max-width: 360px) {
+  .countdown { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  /* 2-col layout: days center shifts to ~25% of section, so arrow follows */
+  .ann-arrow-countdown { left: 13%; }
+}

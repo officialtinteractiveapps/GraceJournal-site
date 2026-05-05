@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grace Journal — Launching 24 May 2026</title>
+<meta name="description" content="Grace Journal — a spiritual growth app. Launching 24 May 2026.">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23141619'/><text x='16' y='23' font-family='Georgia,serif' font-size='20' font-style='italic' fill='%23F6F5F3' text-anchor='middle'>G</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..600,30..100&family=DM+Sans:wght@400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<!-- Hand-drawn roughness filter — makes any SVG stroke wobble like pencil -->
+<svg class="defs" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4"/>
+      <feDisplacementMap in="SourceGraphic" scale="2"/>
+    </filter>
+  </defs>
+</svg>
+
+<header>
+  <span class="wordmark">Grace Journal</span>
+  <span class="meta">A Spiritual Growth App</span>
+</header>
+
+<main>
+
+  <div class="headline-wrap">
+    <h1 class="headline">
+      Understand His <em>Grace.</em><br>
+      Grow in His <em>Grace.</em><br>
+      Work in His <em class="ul ul-coral">Grace</em>.
+    </h1>
+  </div>
+
+  <section class="countdown-section">
+
+    <span class="ann ann-countdown">until 24 May ✦</span>
+    <svg class="ann-arrow-countdown" viewBox="0 0 75 75" aria-hidden="true">
+      <path d="M 8 6 Q 28 22, 42 45 Q 50 62, 52 70"
+            stroke="currentColor" stroke-width="1.4"
+            fill="none" stroke-linecap="round"
+            filter="url(#rough)"/>
+      <path d="M 44 62 L 52 70 L 60 60"
+            stroke="currentColor" stroke-width="1.4"
+            fill="none" stroke-linecap="round" stroke-linejoin="round"
+            filter="url(#rough)"/>
+    </svg>
+
+    <div class="countdown" id="countdown" aria-label="Countdown to launch">
+      <div class="unit"><span class="num" id="days">00</span><span class="label">Days</span></div>
+      <div class="unit"><span class="num" id="hours">00</span><span class="label">Hours</span></div>
+      <div class="unit"><span class="num" id="minutes">00</span><span class="label">Minutes</span></div>
+      <div class="unit"><span class="num" id="seconds">00</span><span class="label">Seconds</span></div>
+    </div>
+
+    <p class="countdown-date">Sunday, 24 May 2026</p>
+
+  </section>
+
+  <div class="verse-wrap">
+    <blockquote class="verse">
+      &ldquo;My <span class="circled" id="grace-word">GRACE</span> is sufficient for you, for my power is made
+      <span class="hl hl-purple">perfect</span>
+      in <span class="ul ul-pink">weakness</span>.&rdquo;
+      <cite>2 Corinthians 12:9</cite>
+    </blockquote>
+    <svg class="ann-arrow-verse" viewBox="0 0 55 70" aria-hidden="true">
+      <path d="M 32 65 Q 24 48, 19 28 Q 16 14, 14 6"
+            stroke="currentColor" stroke-width="1.4"
+            fill="none" stroke-linecap="round"
+            filter="url(#rough)"/>
+      <path d="M 7 14 L 14 6 L 22 12"
+            stroke="currentColor" stroke-width="1.4"
+            fill="none" stroke-linecap="round" stroke-linejoin="round"
+            filter="url(#rough)"/>
+    </svg>
+    <span class="ann ann-verse">the heart of it.</span>
+  </div>
+
+</main>
+
+<footer>
+  <span>© 2026 Grace Journal</span>
+  <nav class="nav-links" aria-label="Legal">
+    <span class="ann ann-footer">read these too ✿</span>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script src="index.js" defer></script>
+
+</body>
+</html>

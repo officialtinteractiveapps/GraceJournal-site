@@ -1,312 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Grace Journal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
-            background: #000000;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        h1 {
-            color: white;
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-        }
-        
-        .effective-date {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 30px;
-            display: block;
-        }
-        
-        .intro {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 16px;
-            font-weight: 400;
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-        
-        h2 {
-            color: white;
-            margin-top: 48px;
-            margin-bottom: 20px;
-            font-size: 24px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        h2:before {
-            content: '';
-            width: 4px;
-            height: 24px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 2px;
-        }
-        
-        h3 {
-            color: rgba(255, 255, 255, 0.95);
-            margin-top: 32px;
-            margin-bottom: 16px;
-            font-size: 18px;
-            font-weight: 500;
-        }
-        
-        h4 {
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 24px;
-            margin-bottom: 12px;
-            font-size: 16px;
-            font-weight: 500;
-        }
-        
-        p {
-            margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 15px;
-            font-weight: 400;
-            line-height: 1.8;
-        }
-        
-        ul {
-            margin-left: 24px;
-            margin-bottom: 20px;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 15px;
-            font-weight: 400;
-            line-height: 1.7;
-        }
-        
-        li strong {
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-        }
-        
-        /* Special sections styling */
-        .info-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 24px 0;
-        }
-        
-        .security-section {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 24px;
-            margin: 32px 0;
-        }
-        
-        .contact-section {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 32px;
-            margin-top: 60px;
-            text-align: center;
-        }
-        
-        .contact-section h2 {
-            justify-content: center;
-            margin-top: 0;
-        }
-        
-        .contact-section h2:before {
-            display: none;
-        }
-        
-        a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: underline;
-            text-underline-offset: 2px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-        
-        a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-        
-        /* Numbered sections */
-        .numbered-section {
-            position: relative;
-            padding-left: 20px;
-        }
-        
-        /* Mobile responsiveness */
-        @media (max-width: 640px) {
-            .container {
-                padding: 24px 16px;
-            }
-            
-            h1 {
-                font-size: 28px;
-            }
-            
-            h2 {
-                font-size: 20px;
-            }
-            
-            h3 {
-                font-size: 17px;
-            }
-            
-            p, li {
-                font-size: 14px;
-            }
-        }
-        
-        /* Smooth scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Selection color */
-        ::selection {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Grace Journal</title>
+<meta name="description" content="How Grace Journal collects, uses, stores, and protects your information.">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23141619'/><text x='16' y='23' font-family='Georgia,serif' font-size='20' font-style='italic' fill='%23F6F5F3' text-anchor='middle'>G</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..600,30..100&family=DM+Sans:wght@400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="legal.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Privacy Policy</h1>
-        <span class="effective-date">Effective Date: August 16, 2025</span>
-        
-        <p class="intro">
-            Grace Journal ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use our mobile application and related services ("Services").
-        </p>
-        
-        <h2>1. Information We Collect</h2>
-        <p>We may collect the following types of information when you use Grace Journal:</p>
-        
-        <h3>1.1 Personal Information</h3>
-        <ul>
-            <li><strong>Name (first name, last name)</strong> – used to personalize your account and communications.</li>
-            <li><strong>Phone number</strong> – used for account authentication and security.</li>
-            <li><strong>Email address</strong> – used for account recovery, communication, and updates.</li>
-        </ul>
-        
-        <h3>1.2 User-Generated Content</h3>
-        <ul>
-            <li><strong>Thankfulness entries</strong> – voluntarily provided by you to use in features such as the Prayer List. These entries may include personal reflections, prayer requests, or other sensitive information you choose to share.</li>
-        </ul>
-        
-        <h3>1.3 Technical Information</h3>
-        <ul>
-            <li>Device information (model, operating system, app version)</li>
-            <li>Usage data (how you interact with features, error logs)</li>
-            <li>Approximate location data (if location-based features are enabled)</li>
-        </ul>
-        
-        <p>We do not collect prayer entries, and we only collect other information when it is relevant to providing or improving our services.</p>
-        
-        <h2>2. How We Use Your Information</h2>
-        <p>We use your information to:</p>
-        <ul>
-            <li>Provide and improve our Services</li>
-            <li>Personalize your user experience</li>
-            <li>Generate Prayer Lists from your thankfulness entries (only visible to you unless you explicitly share them)</li>
-            <li>Authenticate and secure your account</li>
-            <li>Send updates, encouragements, and relevant notifications (if you opt in)</li>
-            <li>Troubleshoot and fix issues in the app</li>
-        </ul>
-        
-        <h2>3. Sharing of Information</h2>
-        <p>We do not sell your personal information. We may share information only in the following limited cases:</p>
-        <ul>
-            <li><strong>With your consent</strong> – for example, if you choose to share a prayer request or thankfulness entry or notes with another user.</li>
-            <li><strong>Service providers</strong> – companies that help us operate the app (e.g., cloud hosting, analytics) and are bound by confidentiality agreements.</li>
-            <li><strong>Legal requirements</strong> – if required by law, court order, or to protect our rights and safety.</li>
-        </ul>
-        
-        <h2>4. Storage & Security</h2>
-        
-        <div class="security-section">
-            <h3>4.1 Where your notes live</h3>
-            <p>Notes, thankfulness entries, and prayer lists are stored either locally on your device or, if you choose to sign in, encrypted in your account on our servers. Local copies exist so the app works offline and gives you fast editing access.</p>
-            
-            <h3>4.2 Encryption & access</h3>
-            <p>Data is protected in transit (when it moves between your device and our servers) and is stored on our servers encrypted at rest. We and our service providers only store encrypted representations of your notes on servers and do not have the ability to decrypt those server-side encrypted blobs.</p>
-            <p>We will not unencrypt, read, or export your notes from server storage. We also will not provide decrypted copies of your notes or prayer lists to third parties.</p>
-            
-            <h3>4.3 Backups & retention</h3>
-            <p>Encrypted backups that may contain note data are retained for a limited period (up to 30 days) after deletion for disaster recovery and fraud prevention. During this retention window, deleted content is not available to other users and cannot be exported or accessed, and is only used for disaster recovery purposes.</p>
-            <p>After the retention window, we make commercially reasonable efforts to purge deleted data from backups and provider systems.</p>
-            
-            <h3>4.4 No export guarantee</h3>
-            <p>We cannot and will not export thankfulness entries or prayer lists — neither we nor our service providers will provide those notes in plaintext or as an export file to third parties. If you want a local copy, you must create it on your device (for example by copying text into another app under your control).</p>
-            
-            <h3>4.5 Device responsibility</h3>
-            <p>Because the app keeps a plaintext copy on your device for offline editing, protecting that device is your responsibility. We are not responsible for disclosure, modification, or deletion of note content that results from device compromise (for example jailbreaking, rooting, installing untrusted software, or granting other apps access to your device storage).</p>
-            <p><strong>We strongly recommend using a device passcode, enabling biometric locks, and keeping your OS and apps up to date.</strong></p>
-            
-            <h3>4.6 When we may be required to disclose</h3>
-            <p>We will not disclose your notes to third parties except: (a) as required by law (for example a lawful court order); (b) to comply with a valid legal process; or (c) to protect rights or safety where legally permitted. In such cases we will disclose only what is required and will notify you unless legally prohibited.</p>
-            
-            <h3>4.7 How to remove your data</h3>
-            <p>You can delete notes or close your account in the app. After deletion we remove data from active systems promptly; encrypted backups that may contain deleted data will be retained for the 30-day backup window described above and then purged according to our provider practices.</p>
-            
-            <h3>4.8 Data exports</h3>
-            <p>You may request a copy of the personal information we hold about you, including notes, thankfulness entries, and prayer lists that are currently active in your account.</p>
-            <p>Deleted notes are not included in exports, even if they exist in backups, as backups are retained solely for disaster recovery and are not accessible for export purposes.</p>
-            <p>To request your data, email us at <a href="mailto:tinteractiveapps@gmail.com">tinteractiveapps@gmail.com</a>. We aim to respond within 20 working days.</p>
-        </div>
-        
-        <h2>5. Your Rights</h2>
-        <p>Depending on your location, you may have the right to:</p>
-        <ul>
-            <li>Access a copy of your personal data</li>
-            <li>Request correction or deletion of your data</li>
-            <li>Withdraw consent for optional features</li>
-        </ul>
-        <p>To make a request, email us at <a href="mailto:tinteractiveapps@gmail.com">tinteractiveapps@gmail.com</a></p>
-        
-        <h2>6. Children's Privacy</h2>
-        <p>Grace Journal is not directed to children under 13. We do not knowingly collect personal data from children under 13 without parental consent.</p>
-        
-        <h2>7. Changes to This Policy</h2>
-        <p>We may update this Privacy Policy from time to time. We will notify you within the app when significant changes are made.</p>
-        
-        <div class="contact-section">
-            <h2>Contact Us</h2>
-            <p>If you have questions or concerns about this policy, contact:</p>
-            <p><strong>Email:</strong> <a href="mailto:tinteractiveapps@gmail.com">tinteractiveapps@gmail.com</a></p>
-        </div>
+
+<div class="container">
+
+  <header class="page-header">
+    <a href="index.html" class="wordmark">Grace Journal</a>
+    <a href="index.html" class="back-link">Home</a>
+  </header>
+
+  <div class="title-block">
+    <h1 class="page-title">Privacy <em>Policy</em></h1>
+    <span class="effective">Effective · 16 August 2025</span>
+  </div>
+
+  <p class="lede">
+    Grace Journal (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use our mobile application and related services (&ldquo;Services&rdquo;).
+  </p>
+
+  <section>
+    <h2><span class="num">1</span>Information We Collect</h2>
+    <p>We may collect the following types of information when you use Grace Journal:</p>
+
+    <h3>1.1 Personal Information</h3>
+    <ul>
+      <li><strong>Name (first name, last name)</strong> — used to personalize your account and communications.</li>
+      <li><strong>Phone number</strong> — used for account authentication and security.</li>
+      <li><strong>Email address</strong> — used for account recovery, communication, and updates.</li>
+    </ul>
+
+    <h3>1.2 User-Generated Content</h3>
+    <ul>
+      <li><strong>Thankfulness entries</strong> — voluntarily provided by you to use in features such as the Prayer List. These entries may include personal reflections, prayer requests, or other sensitive information you choose to share.</li>
+    </ul>
+
+    <h3>1.3 Technical Information</h3>
+    <ul>
+      <li>Device information (model, operating system, app version)</li>
+      <li>Usage data (how you interact with features, error logs)</li>
+      <li>Approximate location data (if location-based features are enabled)</li>
+    </ul>
+
+    <p>We do not collect prayer entries, and we only collect other information when it is relevant to providing or improving our services.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>How We Use Your Information</h2>
+    <p>We use your information to:</p>
+    <ul>
+      <li>Provide and improve our Services</li>
+      <li>Personalize your user experience</li>
+      <li>Generate Prayer Lists from your thankfulness entries (only visible to you unless you explicitly share them)</li>
+      <li>Authenticate and secure your account</li>
+      <li>Send updates, encouragements, and relevant notifications (if you opt in)</li>
+      <li>Troubleshoot and fix issues in the app</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">3</span>Sharing of Information</h2>
+    <p>We do not sell your personal information. We may share information only in the following limited cases:</p>
+    <ul>
+      <li><strong>With your consent</strong> — for example, if you choose to share a prayer request or thankfulness entry or notes with another user.</li>
+      <li><strong>Service providers</strong> — companies that help us operate the app (e.g., cloud hosting, analytics) and are bound by confidentiality agreements.</li>
+      <li><strong>Legal requirements</strong> — if required by law, court order, or to protect our rights and safety.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">4</span>Storage &amp; Security</h2>
+
+    <span class="ann">your stuff stays yours ✦</span>
+
+    <div class="callout">
+      <h3>4.1 Where your notes live</h3>
+      <p>Notes, thankfulness entries, and prayer lists are stored either locally on your device or, if you choose to sign in, encrypted in your account on our servers. Local copies exist so the app works offline and gives you fast editing access.</p>
+
+      <h3>4.2 Encryption &amp; access</h3>
+      <p>Data is protected in transit (when it moves between your device and our servers) and is stored on our servers encrypted at rest. We and our service providers only store encrypted representations of your notes on servers and do not have the ability to decrypt those server-side encrypted blobs.</p>
+      <p>We will not unencrypt, read, or export your notes from server storage. We also will not provide decrypted copies of your notes or prayer lists to third parties.</p>
+
+      <h3>4.3 Backups &amp; retention</h3>
+      <p>Encrypted backups that may contain note data are retained for a limited period (up to 30 days) after deletion for disaster recovery and fraud prevention. During this retention window, deleted content is not available to other users and cannot be exported or accessed, and is only used for disaster recovery purposes.</p>
+      <p>After the retention window, we make commercially reasonable efforts to purge deleted data from backups and provider systems.</p>
+
+      <h3>4.4 No export guarantee</h3>
+      <p>We cannot and will not export thankfulness entries or prayer lists — neither we nor our service providers will provide those notes in plaintext or as an export file to third parties. If you want a local copy, you must create it on your device (for example by copying text into another app under your control).</p>
+
+      <h3>4.5 Device responsibility</h3>
+      <p>Because the app keeps a plaintext copy on your device for offline editing, protecting that device is your responsibility. We are not responsible for disclosure, modification, or deletion of note content that results from device compromise (for example jailbreaking, rooting, installing untrusted software, or granting other apps access to your device storage).</p>
+      <p><strong>We strongly recommend using a device passcode, enabling biometric locks, and keeping your OS and apps up to date.</strong></p>
+
+      <h3>4.6 When we may be required to disclose</h3>
+      <p>We will not disclose your notes to third parties except: (a) as required by law (for example a lawful court order); (b) to comply with a valid legal process; or (c) to protect rights or safety where legally permitted. In such cases we will disclose only what is required and will notify you unless legally prohibited.</p>
+
+      <h3>4.7 How to remove your data</h3>
+      <p>You can delete notes or close your account in the app. After deletion we remove data from active systems promptly; encrypted backups that may contain deleted data will be retained for the 30-day backup window described above and then purged according to our provider practices.</p>
+
+      <h3>4.8 Data exports</h3>
+      <p>You may request a copy of the personal information we hold about you, including notes, thankfulness entries, and prayer lists that are currently active in your account.</p>
+      <p>Deleted notes are not included in exports, even if they exist in backups, as backups are retained solely for disaster recovery and are not accessible for export purposes.</p>
+      <p>To request your data, email us at <a href="mailto:tinteractiveapps@gmail.com">tinteractiveapps@gmail.com</a>. We aim to respond within 20 working days.</p>
     </div>
+  </section>
+
+  <section>
+    <h2><span class="num">5</span>Your Rights</h2>
+    <p>Depending on your location, you may have the right to:</p>
+    <ul>
+      <li>Access a copy of your personal data</li>
+      <li>Request correction or deletion of your data</li>
+      <li>Withdraw consent for optional features</li>
+    </ul>
+    <p>To make a request, email us at <a href="mailto:tinteractiveapps@gmail.com">tinteractiveapps@gmail.com</a>.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">6</span>Children&rsquo;s Privacy</h2>
+    <p>Grace Journal is not directed to children under 13. We do not knowingly collect personal data from children under 13 without parental consent.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">7</span>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will notify you within the app when significant changes are made.</p>
+  </section>
+
+  <div class="contact">
+    <h2>Contact Us</h2>
+    <p>If you have questions or concerns about this policy, get in touch.</p>
+    <p><strong>Email</strong> · <a href="mailto:tinteractiveapps@gmail.com">tinteractiveapps@gmail.com</a></p>
+  </div>
+
+  <footer class="page-footer">
+    <span>© 2026 Grace Journal</span>
+    <nav class="footer-links" aria-label="Legal">
+      <a href="index.html">Home</a>
+      <a href="terms.html">Terms</a>
+      <a href="feedback.html">Feedback</a>
+    </nav>
+  </footer>
+
+</div>
+
 </body>
 </html>

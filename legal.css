@@ -1,7 +1,6 @@
 /* ─────────────────────────────────────────────────────────────
    Grace Journal — Legal pages (Privacy & Terms)
-   Shares brand foundation with index.css but tuned for long-form
-   reading: tighter measure, larger body text, gentler accents.
+   Editorial dark theme, brand-aligned annotations, mobile-first.
    ───────────────────────────────────────────────────────────── */
 
 :root {
@@ -22,6 +21,8 @@
   --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
   --sans:  'DM Sans', system-ui, -apple-system, sans-serif;
   --hand:  'Caveat', 'Bradley Hand', cursive;
+
+  --col: 38rem;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,7 +47,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Faint film grain — same texture as the home page */
 body::before {
   content: '';
   position: fixed;
@@ -57,23 +57,41 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Hidden defs — the rough filter for any hand-drawn flourish */
 .defs {
   position: absolute;
   width: 0; height: 0;
   pointer-events: none;
 }
 
-/* ───── Layout ───── */
+/* ════════════════ LAYOUT ════════════════ */
 .container {
-  max-width: 38rem;          /* ~600px — comfortable reading measure */
+  max-width: 68rem;
   margin: 0 auto;
   padding: clamp(1.5rem, 5vw, 3rem) clamp(1.25rem, 5vw, 2.5rem);
   position: relative;
   z-index: 2;
 }
 
-/* ───── Page header ───── */
+.page-header,
+.title-block,
+.lede,
+section,
+.contact,
+.page-footer {
+  max-width: var(--col);
+}
+
+@media (min-width: 900px) {
+  .container {
+    padding: clamp(3rem, 6vh, 5rem) clamp(2.5rem, 6vw, 5rem);
+  }
+  .page-header { max-width: 56rem; }
+  .title-block { max-width: 52rem; }
+  .lede { max-width: 44rem; }
+  section { position: relative; }
+}
+
+/* ════════════════ HEADER ════════════════ */
 .page-header {
   display: flex;
   justify-content: space-between;
@@ -117,20 +135,21 @@ body::before {
 
 .back-link:hover, .back-link:focus-visible { color: var(--ink); }
 
-/* ───── Title block ───── */
+/* ════════════════ TITLE ════════════════ */
 .title-block {
   margin-bottom: clamp(2rem, 6vh, 3.25rem);
+  position: relative;
 }
 
 .page-title {
   font-family: var(--serif);
   font-weight: 350;
-  font-size: clamp(2.4rem, 8vw, 4rem);
-  line-height: 1.04;
+  font-size: clamp(2.4rem, 9vw, 5.25rem);
+  line-height: 1.02;
   letter-spacing: -0.025em;
   color: var(--ink);
   font-variation-settings: 'opsz' 144, 'SOFT' 30;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
 }
 
 .page-title em {
@@ -152,7 +171,7 @@ body::before {
   font-family: var(--serif);
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(1.05rem, 2.4vw, 1.2rem);
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
   line-height: 1.65;
   color: var(--ink-mute);
   margin: clamp(2rem, 5vh, 2.75rem) 0 clamp(2.5rem, 7vh, 3.75rem);
@@ -160,7 +179,7 @@ body::before {
   position: relative;
 }
 
-/* ───── Sections ───── */
+/* ════════════════ SECTIONS & PROSE ════════════════ */
 section { margin-bottom: clamp(2rem, 5vh, 3rem); }
 
 h2 {
@@ -206,7 +225,6 @@ h4 {
   margin: 1.25rem 0 0.5rem;
 }
 
-/* ───── Body prose ───── */
 p {
   font-family: var(--sans);
   font-size: 1rem;
@@ -232,11 +250,7 @@ li {
 
 li::marker { color: var(--ink-faint); }
 
-strong {
-  color: var(--ink);
-  font-weight: 500;
-}
-
+strong { color: var(--ink); font-weight: 500; }
 em { font-style: italic; }
 
 a {
@@ -252,7 +266,6 @@ a:hover, a:focus-visible {
   text-decoration-color: var(--ink);
 }
 
-/* Subsection number prefix on prose paragraphs (e.g. "2.1" "5.3") */
 .sub {
   display: inline-block;
   font-family: var(--serif);
@@ -263,7 +276,7 @@ a:hover, a:focus-visible {
   font-variation-settings: 'opsz' 24, 'SOFT' 100;
 }
 
-/* ───── Definition list (used in Terms §1) ───── */
+/* ════════════════ DEFINITION LIST ════════════════ */
 .defs-list {
   list-style: none;
   padding-left: 0;
@@ -294,7 +307,7 @@ a:hover, a:focus-visible {
   color: var(--ink-mute);
 }
 
-/* ───── Callout (used for the dense security/encryption sections) ───── */
+/* ════════════════ CALLOUT ════════════════ */
 .callout {
   border-left: 2px solid var(--ink-ghost);
   padding: 0.25rem 0 0.25rem 1.25rem;
@@ -303,24 +316,137 @@ a:hover, a:focus-visible {
 
 .callout > h3:first-child { margin-top: 0.25rem; }
 
-/* ───── Sparing handwritten annotation ───── */
+/* ════════════════ ANNOTATION TOOLKIT ════════════════ */
+
+/* Highlights */
+.hl {
+  padding: 0.06em 0.32em;
+  margin: 0 -0.05em;
+  border-radius: 3px;
+}
+.hl-purple { background: rgba(196, 181, 253, 0.18); color: var(--purple); }
+.hl-yellow { background: rgba(252, 211, 77, 0.16);  color: var(--yellow); }
+.hl-pink   { background: rgba(249, 168, 212, 0.16); color: var(--pink); }
+.hl-sage   { background: rgba(134, 239, 172, 0.16); color: var(--sage); }
+.hl-blue   { background: rgba(147, 197, 253, 0.16); color: var(--blue); }
+.hl-coral  { background: rgba(252, 165, 165, 0.16); color: var(--coral); }
+
+/* Wavy underlines */
+.ul {
+  position: relative;
+  display: inline-block;
+}
+.ul::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  bottom: -0.18em;
+  height: 0.4em;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+.ul-pink::after   { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M 1 6 Q 10 2, 20 5 T 40 5 T 60 4 T 80 6 T 99 5' stroke='%23F9A8D4' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.ul-coral::after  { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M 1 6 Q 10 2, 20 5 T 40 5 T 60 4 T 80 6 T 99 5' stroke='%23FCA5A5' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.ul-yellow::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M 1 6 Q 10 2, 20 5 T 40 5 T 60 4 T 80 6 T 99 5' stroke='%23FCD34D' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.ul-blue::after   { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M 1 6 Q 10 2, 20 5 T 40 5 T 60 4 T 80 6 T 99 5' stroke='%2393C5FD' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.ul-sage::after   { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M 1 6 Q 10 2, 20 5 T 40 5 T 60 4 T 80 6 T 99 5' stroke='%2386EFAC' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
+
+.ul-double::after {
+  height: 0.7em;
+  bottom: -0.32em;
+}
+.ul-double.ul-coral::after  { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'%3E%3Cpath d='M 1 5 Q 10 1, 20 4 T 40 4 T 60 3 T 80 5 T 99 4' stroke='%23FCA5A5' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M 1 11 Q 10 7, 20 10 T 40 10 T 60 9 T 80 11 T 99 10' stroke='%23FCA5A5' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.ul-double.ul-yellow::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'%3E%3Cpath d='M 1 5 Q 10 1, 20 4 T 40 4 T 60 3 T 80 5 T 99 4' stroke='%23FCD34D' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M 1 11 Q 10 7, 20 10 T 40 10 T 60 9 T 80 11 T 99 10' stroke='%23FCD34D' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
+
+em.ul, .ul em { font-style: italic; }
+
+/* Hand-drawn circle */
+.circled {
+  position: relative;
+  display: inline-block;
+  padding: 0.1em 0.45em 0.1em 0.4em;
+  font-style: inherit;
+}
+.circled::after {
+  content: '';
+  position: absolute;
+  inset: -0.18em -0.05em -0.18em -0.05em;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+.circled-blue::after   { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 50' preserveAspectRatio='none'%3E%3Cpath d='M 60 3 C 100 3, 117 12, 117 25 C 117 40, 95 47, 60 47 C 22 47, 4 39, 3 25 C 2 11, 25 3, 60 3.5' stroke='%2393C5FD' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.circled-coral::after  { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 50' preserveAspectRatio='none'%3E%3Cpath d='M 60 3 C 100 3, 117 12, 117 25 C 117 40, 95 47, 60 47 C 22 47, 4 39, 3 25 C 2 11, 25 3, 60 3.5' stroke='%23FCA5A5' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.circled-yellow::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 50' preserveAspectRatio='none'%3E%3Cpath d='M 60 3 C 100 3, 117 12, 117 25 C 117 40, 95 47, 60 47 C 22 47, 4 39, 3 25 C 2 11, 25 3, 60 3.5' stroke='%23FCD34D' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.circled-sage::after   { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 50' preserveAspectRatio='none'%3E%3Cpath d='M 60 3 C 100 3, 117 12, 117 25 C 117 40, 95 47, 60 47 C 22 47, 4 39, 3 25 C 2 11, 25 3, 60 3.5' stroke='%2386EFAC' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
+
+/* Scribble-out */
+.scribble {
+  position: relative;
+  display: inline-block;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.scribble::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  top: 50%;
+  height: 0.55em;
+  transform: translateY(-50%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+.scribble-coral::after  { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'%3E%3Cpath d='M 1 4 Q 10 1, 20 4 T 40 4 T 60 3 T 80 5 T 99 4' stroke='%23FCA5A5' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.scribble-pink::after   { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'%3E%3Cpath d='M 1 4 Q 10 1, 20 4 T 40 4 T 60 3 T 80 5 T 99 4' stroke='%23F9A8D4' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
+
+/* Handwritten note */
 .ann {
   font-family: var(--hand);
   font-weight: 400;
   font-size: 1.35rem;
-  color: var(--coral);
   display: inline-block;
   transform: rotate(-2deg);
   white-space: nowrap;
-  margin: 0.25rem 0 0.5rem;
-  line-height: 1;
+  margin: 0.4rem 0 0.6rem;
+  line-height: 1.1;
+  color: var(--coral);
 }
 
-.ann-blue { color: var(--blue); }
-.ann-sage { color: var(--sage); }
+.ann-coral  { color: var(--coral); }
+.ann-blue   { color: var(--blue); }
+.ann-sage   { color: var(--sage); }
 .ann-yellow { color: var(--yellow); }
+.ann-pink   { color: var(--pink); }
+.ann-purple { color: var(--purple); }
 
-/* ───── Contact card ───── */
+.annotated { position: relative; }
+
+@media (min-width: 900px) {
+  .ann-margin {
+    position: absolute;
+    left: 100%;
+    top: 0.25rem;
+    margin-left: 1.75rem;
+    max-width: 11rem;
+    white-space: normal;
+    line-height: 1.2;
+    font-size: 1.3rem;
+    transform: rotate(-3deg);
+  }
+  .ann-margin.ann-bottom {
+    top: auto;
+    bottom: 0.5rem;
+  }
+  .ann-margin.tilt-r { transform: rotate(2deg); }
+  .ann-margin.tilt-l { transform: rotate(-4deg); }
+}
+
+/* ════════════════ CONTACT CARD ════════════════ */
 .contact {
   border: 1px solid var(--ink-ghost);
   border-radius: 8px;
@@ -342,7 +468,7 @@ a:hover, a:focus-visible {
 
 .contact p:last-child { margin-bottom: 0; }
 
-/* ───── Footer ───── */
+/* ════════════════ FOOTER ════════════════ */
 .page-footer {
   display: flex;
   justify-content: space-between;
@@ -388,13 +514,12 @@ a:hover, a:focus-visible {
   transform-origin: left;
 }
 
-/* ───── Selection ───── */
+/* ════════════════ SELECTION + ANIMATION ════════════════ */
 ::selection {
   background: rgba(252, 211, 77, 0.25);
   color: var(--ink);
 }
 
-/* ───── Page-load fade ───── */
 .container {
   opacity: 0;
   animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
@@ -414,28 +539,20 @@ a:hover, a:focus-visible {
   html { scroll-behavior: auto; }
 }
 
-/* ───── Mobile tweaks ───── */
+/* ════════════════ MOBILE TWEAKS ════════════════ */
 @media (max-width: 480px) {
-  /* Stack header + back link on very narrow screens */
   .page-header { gap: 0.4rem; }
-
-  /* Slightly tighter margins between sections */
   h2 { margin-top: clamp(2.25rem, 7vh, 3rem); }
 
-  /* Footer stacks centered */
   .page-footer {
     justify-content: center;
     text-align: center;
   }
   .footer-links { justify-content: center; flex-wrap: wrap; }
 
-  /* Annotation slightly smaller on tiny screens */
   .ann { font-size: 1.2rem; }
 }
 
-/* Long URL / email overflow safety on mobile */
 @media (max-width: 380px) {
-  a[href^="mailto:"] {
-    word-break: break-word;
-  }
+  a[href^="mailto:"] { word-break: break-word; }
 }

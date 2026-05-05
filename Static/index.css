@@ -303,15 +303,22 @@ em.ul { font-style: italic; }
   white-space: nowrap;
 }
 
+/* Arrow connecting "the heart of it" to GRACE.
+   --arrow-top + --arrow-height are set by JS so the tip always sits a
+   consistent ~12px below GRACE regardless of how the verse wraps. The
+   tail still anchors to wrap.bottom + 1rem, matching the original look.
+   CSS fallbacks (auto / 70px / -1rem) keep things sensible if JS hasn't
+   run yet — the page paints fine before measurement. */
 .ann-arrow-verse {
   position: absolute;
+  top: var(--arrow-top, auto);
   bottom: -1rem;
   /* Arrow base path point is at viewBox x=32 in 55-wide SVG.
      Offset by -32px from --grace-x so the base sits exactly at the
      center of GRACE — same vertical axis as the text below. */
   left: calc(var(--grace-x, 14%) - 32px);
   width: 55px;
-  height: 70px;
+  height: var(--arrow-height, 70px);
   color: var(--blue);
   z-index: 3;
   pointer-events: none;
@@ -439,7 +446,7 @@ footer              { animation-delay: 1.4s; }
   }
 
   .ann-verse { font-size: 1.05rem; bottom: -2.5rem; }
-  /* verse arrow keeps desktop sizing — fits mobile fine */
+  /* verse arrow sizing handled dynamically by JS — no override needed */
 
   .ann-footer { display: none; }
 

@@ -1,0 +1,441 @@
+/* ─────────────────────────────────────────────────────────────
+   Grace Journal — Legal pages (Privacy & Terms)
+   Shares brand foundation with index.css but tuned for long-form
+   reading: tighter measure, larger body text, gentler accents.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --bg: #141619;
+  --ink: #F6F5F3;
+  --ink-mute: rgba(246, 245, 243, 0.78);
+  --ink-soft: rgba(246, 245, 243, 0.6);
+  --ink-faint: rgba(246, 245, 243, 0.32);
+  --ink-ghost: rgba(246, 245, 243, 0.08);
+
+  --purple: #C4B5FD;
+  --pink:   #F9A8D4;
+  --yellow: #FCD34D;
+  --blue:   #93C5FD;
+  --sage:   #86EFAC;
+  --coral:  #FCA5A5;
+
+  --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --sans:  'DM Sans', system-ui, -apple-system, sans-serif;
+  --hand:  'Caveat', 'Bradley Hand', cursive;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink-mute);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  min-height: 100svh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Faint film grain — same texture as the home page */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Hidden defs — the rough filter for any hand-drawn flourish */
+.defs {
+  position: absolute;
+  width: 0; height: 0;
+  pointer-events: none;
+}
+
+/* ───── Layout ───── */
+.container {
+  max-width: 38rem;          /* ~600px — comfortable reading measure */
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 3rem) clamp(1.25rem, 5vw, 2.5rem);
+  position: relative;
+  z-index: 2;
+}
+
+/* ───── Page header ───── */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  margin-bottom: clamp(2.5rem, 8vh, 4.5rem);
+}
+
+.wordmark {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 350;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+  font-variation-settings: 'opsz' 24, 'SOFT' 80;
+  transition: opacity 0.3s ease;
+}
+
+.wordmark:hover, .wordmark:focus-visible { opacity: 0.7; }
+
+.back-link {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.back-link::before {
+  content: '←';
+  margin-right: 0.55em;
+  font-family: var(--serif);
+  font-weight: 300;
+}
+
+.back-link:hover, .back-link:focus-visible { color: var(--ink); }
+
+/* ───── Title block ───── */
+.title-block {
+  margin-bottom: clamp(2rem, 6vh, 3.25rem);
+}
+
+.page-title {
+  font-family: var(--serif);
+  font-weight: 350;
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  margin-bottom: 0.75rem;
+}
+
+.page-title em {
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+
+.effective {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.lede {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.05rem, 2.4vw, 1.2rem);
+  line-height: 1.65;
+  color: var(--ink-mute);
+  margin: clamp(2rem, 5vh, 2.75rem) 0 clamp(2.5rem, 7vh, 3.75rem);
+  font-variation-settings: 'opsz' 24, 'SOFT' 100;
+  position: relative;
+}
+
+/* ───── Sections ───── */
+section { margin-bottom: clamp(2rem, 5vh, 3rem); }
+
+h2 {
+  font-family: var(--serif);
+  font-weight: 350;
+  font-size: clamp(1.55rem, 4.5vw, 2.05rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: clamp(2.75rem, 7vh, 4rem) 0 1.25rem;
+  font-variation-settings: 'opsz' 72, 'SOFT' 50;
+}
+
+h2 .num {
+  display: inline-block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.7em;
+  color: var(--ink-faint);
+  margin-right: 0.55em;
+  letter-spacing: 0;
+  font-variation-settings: 'opsz' 24, 'SOFT' 100;
+}
+
+h3 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2.6vw, 1.25rem);
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 1.75rem 0 0.75rem;
+  font-variation-settings: 'opsz' 24, 'SOFT' 100;
+}
+
+h4 {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin: 1.25rem 0 0.5rem;
+}
+
+/* ───── Body prose ───── */
+p {
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.72;
+  color: var(--ink-mute);
+  margin-bottom: 1.1rem;
+}
+
+p:last-child { margin-bottom: 0; }
+
+ul, ol {
+  margin: 0 0 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+li {
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink-mute);
+  margin-bottom: 0.55rem;
+}
+
+li::marker { color: var(--ink-faint); }
+
+strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+em { font-style: italic; }
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--ink-faint);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.25s ease;
+}
+
+a:hover, a:focus-visible {
+  text-decoration-color: var(--ink);
+}
+
+/* Subsection number prefix on prose paragraphs (e.g. "2.1" "5.3") */
+.sub {
+  display: inline-block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-soft);
+  margin-right: 0.45em;
+  font-variation-settings: 'opsz' 24, 'SOFT' 100;
+}
+
+/* ───── Definition list (used in Terms §1) ───── */
+.defs-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1.25rem;
+}
+
+.defs-list > li {
+  margin-bottom: 1.1rem;
+  padding-left: 0;
+}
+
+.defs-list > li:last-child { margin-bottom: 0; }
+
+.defs-term {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+  font-variation-settings: 'opsz' 24, 'SOFT' 100;
+}
+
+.defs-desc {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--ink-mute);
+}
+
+/* ───── Callout (used for the dense security/encryption sections) ───── */
+.callout {
+  border-left: 2px solid var(--ink-ghost);
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.callout > h3:first-child { margin-top: 0.25rem; }
+
+/* ───── Sparing handwritten annotation ───── */
+.ann {
+  font-family: var(--hand);
+  font-weight: 400;
+  font-size: 1.35rem;
+  color: var(--coral);
+  display: inline-block;
+  transform: rotate(-2deg);
+  white-space: nowrap;
+  margin: 0.25rem 0 0.5rem;
+  line-height: 1;
+}
+
+.ann-blue { color: var(--blue); }
+.ann-sage { color: var(--sage); }
+.ann-yellow { color: var(--yellow); }
+
+/* ───── Contact card ───── */
+.contact {
+  border: 1px solid var(--ink-ghost);
+  border-radius: 8px;
+  padding: clamp(1.5rem, 5vw, 2.25rem);
+  margin: clamp(3rem, 8vh, 4.5rem) 0 1.5rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.contact h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.4rem, 3.5vw, 1.6rem);
+}
+
+.contact p {
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+}
+
+.contact p:last-child { margin-bottom: 0; }
+
+/* ───── Footer ───── */
+.page-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem 1.75rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-top: clamp(2.5rem, 6vh, 3.5rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ink-ghost);
+}
+
+.footer-links {
+  display: flex;
+  gap: clamp(1rem, 4vw, 1.75rem);
+}
+
+.page-footer a {
+  color: var(--ink);
+  text-decoration: none;
+  position: relative;
+  transition: opacity 0.3s ease;
+}
+
+.page-footer a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-footer a:hover::after,
+.page-footer a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ───── Selection ───── */
+::selection {
+  background: rgba(252, 211, 77, 0.25);
+  color: var(--ink);
+}
+
+/* ───── Page-load fade ───── */
+.container {
+  opacity: 0;
+  animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* ───── Mobile tweaks ───── */
+@media (max-width: 480px) {
+  /* Stack header + back link on very narrow screens */
+  .page-header { gap: 0.4rem; }
+
+  /* Slightly tighter margins between sections */
+  h2 { margin-top: clamp(2.25rem, 7vh, 3rem); }
+
+  /* Footer stacks centered */
+  .page-footer {
+    justify-content: center;
+    text-align: center;
+  }
+  .footer-links { justify-content: center; flex-wrap: wrap; }
+
+  /* Annotation slightly smaller on tiny screens */
+  .ann { font-size: 1.2rem; }
+}
+
+/* Long URL / email overflow safety on mobile */
+@media (max-width: 380px) {
+  a[href^="mailto:"] {
+    word-break: break-word;
+  }
+}

@@ -64,6 +64,25 @@ header {
   position: relative;
 }
 
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.05rem;
+}
+
+.brand .brand-logo {
+  margin: 0 -0.1rem;
+}
+
+.brand-logo {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
 .wordmark {
   font-family: var(--serif);
   font-style: italic;

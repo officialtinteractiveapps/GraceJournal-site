@@ -4,7 +4,8 @@
       {
         "appIDs": ["2YNJY8TK36.com.TINTERACTIVEAPP.GraceJournal"],
         "components": [
-          { "/": "/share/*" }
+          { "/": "/d/*" },
+          { "/": "/q/*" }
         ]
       }
     ]

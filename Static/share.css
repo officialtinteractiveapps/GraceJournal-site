@@ -266,10 +266,10 @@ em.ul { font-style: italic; }
 
 .ann-arrow-cta {
   position: absolute;
-  bottom: -3rem;
-  right: calc(50% + 6.5rem);
-  width: 60px;
-  height: 70px;
+  bottom: -3.6rem;
+  right: calc(50% + 6rem);
+  width: 80px;
+  height: 80px;
   color: var(--sage);
   pointer-events: none;
   z-index: 3;
@@ -339,7 +339,7 @@ footer      { animation-delay: 0.6s; }
   .ann-headline    { font-size: 1.05rem; top: -3.5rem; }
   .ann-arrow-headline { width: 42px; height: 42px; top: -2.5rem; left: calc(50% + 1.8rem); }
   .ann-cta         { font-size: 1rem; bottom: -3.8rem; right: calc(50% + 7rem); }
-  .ann-arrow-cta   { width: 50px; height: 40px; right: calc(50% + 8rem); bottom: -2.6rem; }
+  .ann-arrow-cta   { width: 64px; height: 64px; right: calc(50% + 7rem); bottom: -3rem; }
   .cta             { padding: 0.8rem 1.4rem; font-size: 0.95rem; }
 }
 
@@ -347,5 +347,5 @@ footer      { animation-delay: 0.6s; }
   .ann-headline       { font-size: 0.95rem; top: -2.6rem; }
   .ann-arrow-headline { width: 36px; height: 36px; top: -1.8rem; left: calc(50% + 1.2rem); }
   .ann-cta            { font-size: 0.95rem; bottom: -3.4rem; right: calc(50% + 5.5rem); }
-  .ann-arrow-cta      { width: 42px; height: 34px; right: calc(50% + 6.5rem); bottom: -2.3rem; }
+  .ann-arrow-cta      { width: 54px; height: 54px; right: calc(50% + 6rem); bottom: -2.6rem; }
 }

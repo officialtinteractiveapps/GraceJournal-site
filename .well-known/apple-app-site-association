@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["YOUR_TEAM_ID.com.yourcompany.GraceJournal"],
+        "components": [
+          { "/": "/share/*" }
+        ]
+      }
+    ]
+  }
+}

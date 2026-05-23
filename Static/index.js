@@ -1,5 +1,5 @@
-// Countdown to 24 May 2026, 00:00 NZST (UTC+12)
-const target = new Date('2026-05-24T00:00:00+12:00').getTime();
+// Countdown to 24 May 2026, 17:00 NZST (UTC+12)
+const target = new Date('2026-05-24T17:00:00+12:00').getTime();
 const $ = (id) => document.getElementById(id);
 const pad = (n) => String(Math.max(0, n)).padStart(2, '0');
 

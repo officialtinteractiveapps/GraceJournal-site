@@ -1,21 +1,34 @@
+<<<<<<< HEAD
+const target = new Date('2026-05-24T00:00:00+12:00').getTime();
 const params = new URLSearchParams(window.location.search);
 const previewStory = params.get('preview') === 'story';
+=======
+// Countdown to 24 May 2026, 17:00 NZST (UTC+12)
+const target = new Date('2026-05-24T17:00:00+12:00').getTime();
+>>>>>>> fcdb18b9d873156789d6f8296f934a8c0671f95b
 const $ = (id) => document.getElementById(id);
+const pad = (n) => String(Math.max(0, n)).padStart(2, '0');
 
 function setLaunchState(isLaunched) {
   document.body.classList.toggle('is-launched', isLaunched);
   document.body.classList.toggle('is-counting', !isLaunched);
 }
 
-if (previewStory) {
-  setLaunchState(true);
-} else {
-  setLaunchState(false);
-  ['days', 'hours', 'minutes', 'seconds'].forEach((id) => {
-    const el = $(id);
-    if (el) el.textContent = '??';
-  });
+function tick() {
+  const diff = target - Date.now();
+  const launched = previewStory || diff <= 0;
+
+  setLaunchState(launched);
+  if (launched) return;
+
+  $('days').textContent = pad(Math.floor(diff / 864e5));
+  $('hours').textContent = pad(Math.floor((diff / 36e5) % 24));
+  $('minutes').textContent = pad(Math.floor((diff / 6e4) % 60));
+  $('seconds').textContent = pad(Math.floor((diff / 1e3) % 60));
 }
+
+tick();
+setInterval(tick, 1000);
 
 const sparkStage = document.querySelector('.spark-stage');
 const mainPhone = document.querySelector('.phone-main');

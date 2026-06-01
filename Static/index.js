@@ -1,52 +1,42 @@
-// Countdown to 24 May 2026, 00:00 NZST (UTC+12)
 const target = new Date('2026-05-24T00:00:00+12:00').getTime();
+const params = new URLSearchParams(window.location.search);
+const previewStory = params.get('preview') === 'story';
 const $ = (id) => document.getElementById(id);
 const pad = (n) => String(Math.max(0, n)).padStart(2, '0');
 
+function setLaunchState(isLaunched) {
+  document.body.classList.toggle('is-launched', isLaunched);
+  document.body.classList.toggle('is-counting', !isLaunched);
+}
+
 function tick() {
   const diff = target - Date.now();
-  if (diff <= 0) {
-    $('days').textContent = '00';
-    $('hours').textContent = '00';
-    $('minutes').textContent = '00';
-    $('seconds').textContent = '00';
-    return;
-  }
-  $('days').textContent    = pad(Math.floor(diff / 864e5));
-  $('hours').textContent   = pad(Math.floor((diff / 36e5) % 24));
-  $('minutes').textContent = pad(Math.floor((diff / 6e4)  % 60));
-  $('seconds').textContent = pad(Math.floor((diff / 1e3)  % 60));
+  const launched = previewStory || diff <= 0;
+
+  setLaunchState(launched);
+  if (launched) return;
+
+  $('days').textContent = pad(Math.floor(diff / 864e5));
+  $('hours').textContent = pad(Math.floor((diff / 36e5) % 24));
+  $('minutes').textContent = pad(Math.floor((diff / 6e4) % 60));
+  $('seconds').textContent = pad(Math.floor((diff / 1e3) % 60));
 }
 
 tick();
 setInterval(tick, 1000);
 
-/* Position the verse annotations under the actual verse reference.
-   We measure the reference's center-x relative to its verse-wrap parent
-   and write it to a CSS variable. This keeps the arrow + "the heart
-   of it" aligned with the cite no matter how the verse wraps. */
-function positionVerseAnnotation() {
-  const reference = document.getElementById('verse-reference');
-  if (!reference) return;
-  const wrap = reference.closest('.verse-wrap');
-  if (!wrap) return;
-  const referenceRect = reference.getBoundingClientRect();
-  const wrapRect = wrap.getBoundingClientRect();
-  const centerX = (referenceRect.left + referenceRect.width / 2) - wrapRect.left;
-  const arrowTop = (referenceRect.bottom - wrapRect.top) + 2;
-  const arrowBottom = -16;
-  const arrowHeight = Math.max(36, wrapRect.height - arrowTop - arrowBottom);
+const sparkStage = document.querySelector('.spark-stage');
+const mainPhone = document.querySelector('.phone-main');
 
-  wrap.style.setProperty('--verse-reference-x', centerX + 'px');
-  wrap.style.setProperty('--arrow-top', arrowTop + 'px');
-  wrap.style.setProperty('--arrow-bottom', arrowBottom + 'px');
-  wrap.style.setProperty('--arrow-height', arrowHeight + 'px');
-}
+if (sparkStage && mainPhone) {
+  sparkStage.addEventListener('pointermove', (event) => {
+    const rect = sparkStage.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+    mainPhone.style.transform = `rotateY(${(-13 + x * 4).toFixed(2)}deg) rotateX(${(4 - y * 4).toFixed(2)}deg) rotateZ(1deg)`;
+  });
 
-positionVerseAnnotation();
-window.addEventListener('resize', positionVerseAnnotation);
-/* Re-measure once fonts have loaded — the reference's width changes when
-   Fraunces swaps in, and we want the arrow under the final layout. */
-if (document.fonts && document.fonts.ready) {
-  document.fonts.ready.then(positionVerseAnnotation);
+  sparkStage.addEventListener('pointerleave', () => {
+    mainPhone.style.transform = 'rotateY(-13deg) rotateX(4deg) rotateZ(1deg)';
+  });
 }

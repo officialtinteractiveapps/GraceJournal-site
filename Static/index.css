@@ -172,11 +172,59 @@ body.is-launched .countdown-only {
   display: none;
 }
 
+.countdown-wrap {
+  position: relative;
+  margin-top: clamp(3rem, 8vh, 5rem);
+}
+
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: clamp(0.8rem, 4vw, 3rem);
-  margin-top: clamp(3rem, 8vh, 5rem);
+}
+
+.countdown-tape {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  width: min(92%, 34rem);
+  padding: clamp(0.55rem, 1.7vw, 0.9rem) clamp(1.1rem, 3vw, 2rem);
+  transform: translate(-50%, -50%) rotate(-2deg);
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.18), transparent 14% 86%, rgba(255, 255, 255, 0.16)),
+    linear-gradient(180deg, rgba(255, 218, 224, 0.92), rgba(244, 177, 188, 0.9));
+  border: 1px solid rgba(255, 238, 241, 0.32);
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.26), 0 0 2.4rem rgba(252, 165, 165, 0.12);
+  color: #2b2115;
+  font-family: var(--hand);
+  font-size: clamp(1.55rem, 4.8vw, 3rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+.countdown-tape::before,
+.countdown-tape::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 1rem;
+  height: 100%;
+  background: rgba(255, 238, 241, 0.48);
+}
+
+.countdown-tape::before {
+  left: 0;
+  clip-path: polygon(0 0, 100% 0, 62% 18%, 100% 38%, 54% 56%, 100% 78%, 68% 100%, 0 100%);
+}
+
+.countdown-tape::after {
+  right: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 28% 100%, 0 78%, 46% 56%, 0 36%, 38% 18%);
 }
 
 .unit {
@@ -1412,10 +1460,20 @@ footer a:focus-visible::after {
     margin-inline: auto;
   }
 
-  .countdown {
-    grid-template-columns: repeat(2, 1fr);
+  .countdown-wrap {
     width: min(100%, 18rem);
     margin-inline: auto;
+  }
+
+  .countdown {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .countdown-tape {
+    width: min(112%, 21rem);
+    padding-inline: 0.8rem;
+    font-size: clamp(1.18rem, 5.6vw, 1.45rem);
+    white-space: nowrap;
   }
 
   .countdown-verse {

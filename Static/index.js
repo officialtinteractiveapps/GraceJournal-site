@@ -1,24 +1,66 @@
-<<<<<<< HEAD
-const target = new Date('2026-05-24T00:00:00+12:00').getTime();
 const params = new URLSearchParams(window.location.search);
 const previewStory = params.get('preview') === 'story';
-=======
-// Countdown to 24 May 2026, 17:00 NZST (UTC+12)
-const target = new Date('2026-05-24T17:00:00+12:00').getTime();
->>>>>>> fcdb18b9d873156789d6f8296f934a8c0671f95b
 const $ = (id) => document.getElementById(id);
 const pad = (n) => String(Math.max(0, n)).padStart(2, '0');
 
-function setLaunchState(isLaunched) {
+const phases = {
+  announcement: new Date('2026-06-28T00:00:00+12:00').getTime(),
+  presave: new Date('2026-07-26T00:00:00+12:00').getTime(),
+  launch: new Date('2026-08-02T00:00:00+12:00').getTime(),
+};
+
+const countdownNote = document.querySelector('.ann-countdown');
+const countdownDate = document.querySelector('.countdown-date');
+
+function setLaunchState(isLaunched, isAugustCountdown, isPresave) {
   document.body.classList.toggle('is-launched', isLaunched);
   document.body.classList.toggle('is-counting', !isLaunched);
+  document.body.classList.toggle('is-august-countdown', isAugustCountdown);
+  document.body.classList.toggle('is-presave', isPresave);
+}
+
+function getCountdownPhase(now) {
+  if (now >= phases.launch) {
+    return {
+      target: phases.launch,
+      launched: true,
+      isAugustCountdown: true,
+      isPresave: true,
+      note: 'until 2 August',
+      date: 'Sunday August 2 2026',
+    };
+  }
+
+  if (now >= phases.announcement) {
+    return {
+      target: phases.launch,
+      launched: false,
+      isAugustCountdown: true,
+      isPresave: now >= phases.presave,
+      note: 'until 2 August',
+      date: 'Sunday August 2 2026',
+    };
+  }
+
+  return {
+    target: phases.announcement,
+    launched: false,
+    isAugustCountdown: false,
+    isPresave: false,
+    note: '???',
+    date: 'Sunday ?????? ? 2026',
+  };
 }
 
 function tick() {
-  const diff = target - Date.now();
-  const launched = previewStory || diff <= 0;
+  const phase = getCountdownPhase(Date.now());
+  const diff = phase.target - Date.now();
+  const launched = previewStory || phase.launched;
 
-  setLaunchState(launched);
+  if (countdownNote) countdownNote.textContent = phase.note;
+  if (countdownDate) countdownDate.textContent = phase.date;
+
+  setLaunchState(launched, phase.isAugustCountdown, phase.isPresave);
   if (launched) return;
 
   $('days').textContent = pad(Math.floor(diff / 864e5));
@@ -29,6 +71,28 @@ function tick() {
 
 tick();
 setInterval(tick, 1000);
+
+// Mobile menu toggle
+const navToggle = document.querySelector('.nav-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+
+if (navToggle && mobileMenu) {
+  const setMenu = (open) => {
+    document.body.classList.toggle('nav-open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+
+  navToggle.addEventListener('click', () => {
+    setMenu(!document.body.classList.contains('nav-open'));
+  });
+
+  // close when the X, a menu link, or Escape is used
+  const closeBtn = mobileMenu.querySelector('.mobile-menu-close');
+  if (closeBtn) closeBtn.addEventListener('click', () => setMenu(false));
+  mobileMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+}
 
 const sparkStage = document.querySelector('.spark-stage');
 const mainPhone = document.querySelector('.phone-main');

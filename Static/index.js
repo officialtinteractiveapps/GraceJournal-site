@@ -1,5 +1,10 @@
 const params = new URLSearchParams(window.location.search);
-const previewStory = params.get('preview') === 'story';
+// Preview overrides for checking launch states before their real date arrives:
+//   ?preview=presave  → the 26 July state (countdown + pre-order button visible)
+//   ?preview=story    → the fully launched state (2 August onward)
+const previewParam = params.get('preview');
+const previewStory = previewParam === 'story';
+const previewPresave = previewParam === 'presave';
 const $ = (id) => document.getElementById(id);
 const pad = (n) => String(Math.max(0, n)).padStart(2, '0');
 
@@ -54,13 +59,20 @@ function getCountdownPhase(now) {
 
 function tick() {
   const phase = getCountdownPhase(Date.now());
-  const diff = phase.target - Date.now();
+  // In presave preview, count down to 2 August to match the forced label.
+  const target = previewPresave ? phases.launch : phase.target;
+  const diff = target - Date.now();
   const launched = previewStory || phase.launched;
 
-  if (countdownNote) countdownNote.textContent = phase.note;
-  if (countdownDate) countdownDate.textContent = phase.date;
+  // Force the 26 July pre-order state: August countdown with the pre-save
+  // button visible, without waiting for the real date.
+  const isAugustCountdown = previewPresave || phase.isAugustCountdown;
+  const isPresave = previewPresave || phase.isPresave;
 
-  setLaunchState(launched, phase.isAugustCountdown, phase.isPresave);
+  if (countdownNote) countdownNote.textContent = previewPresave ? 'until 2 August' : phase.note;
+  if (countdownDate) countdownDate.textContent = previewPresave ? 'Sunday August 2 2026' : phase.date;
+
+  setLaunchState(launched, isAugustCountdown, isPresave);
   if (launched) return;
 
   $('days').textContent = pad(Math.floor(diff / 864e5));

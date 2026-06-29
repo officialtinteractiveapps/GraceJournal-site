@@ -1,0 +1,209 @@
+/* Contact form — shares the design tokens already defined in legal.css.
+   Styles only the form elements added to contact.html. */
+
+.contact-form-section {
+  position: relative;
+  max-width: 44rem;
+  margin: clamp(1.25rem, 3vh, 2rem) 0 clamp(2rem, 6vh, 3rem);
+}
+
+.contact-form {
+  max-width: 42rem;
+}
+
+/* On desktop, sections reserve a tall left column for their heading +
+   margin annotation. Section 1 above the form is short, so collapse its
+   reserved height and let the annotation sit close to the form instead of
+   leaving a large empty band. */
+@media (min-width: 900px) {
+  .section-flush {
+    min-height: 0;
+    margin-bottom: clamp(2rem, 4vh, 3rem);
+  }
+
+  .section-flush > .ann-margin {
+    top: 7rem;
+  }
+
+  /* Align the form into the same left-indented column as the sections so it
+     visually continues from "General & support". */
+  .contact-form-section {
+    padding-left: clamp(16rem, 28vw, 30rem);
+  }
+}
+
+/* Field group + labels */
+.cf-group {
+  margin-bottom: 1.35rem;
+}
+
+.cf-group:last-child { margin-bottom: 0; }
+
+.cf-group label,
+.cf-group legend {
+  display: block;
+  font-family: var(--sans, 'DM Sans', system-ui, sans-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink, #F6F5F3);
+  margin-bottom: 0.55rem;
+}
+
+.cf-hint {
+  display: block;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--ink-soft, rgba(246, 245, 243, 0.6));
+  margin-top: -0.25rem;
+  margin-bottom: 0.6rem;
+}
+
+.cf-required {
+  color: var(--coral, #FCA5A5);
+  font-weight: 500;
+}
+
+/* Inputs, selects, textareas */
+.cf-input,
+.cf-select,
+.cf-textarea {
+  width: 100%;
+  border: 1px solid var(--ink-ghost, rgba(246, 245, 243, 0.08));
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--ink, #F6F5F3);
+  font-family: var(--sans, 'DM Sans', system-ui, sans-serif);
+  font-size: 1rem;
+  line-height: 1.55;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.cf-textarea {
+  min-height: 6rem;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.cf-input:focus,
+.cf-select:focus,
+.cf-textarea:focus {
+  outline: none;
+  border-color: var(--ink-faint, rgba(246, 245, 243, 0.32));
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.cf-input::placeholder,
+.cf-textarea::placeholder { color: var(--ink-faint, rgba(246, 245, 243, 0.32)); }
+
+/* Native select chevron */
+.cf-select {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  padding-right: 2.75rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23F6F5F3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+.cf-select option {
+  background: var(--bg, #141619);
+  color: var(--ink, #F6F5F3);
+}
+
+/* Conditional blocks — hidden until a request type is chosen */
+.cf-conditional {
+  display: none;
+}
+
+.cf-conditional.is-active {
+  display: block;
+  animation: cfFade 0.35s ease both;
+}
+
+@keyframes cfFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cf-fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* Submit */
+.cf-submit {
+  border: 0;
+  border-radius: 8px;
+  padding: 0.9rem 1.4rem;
+  margin-top: 0.5rem;
+  background: var(--ink, #F6F5F3);
+  color: var(--bg, #141619);
+  font-family: var(--sans, 'DM Sans', system-ui, sans-serif);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.cf-submit:hover,
+.cf-submit:focus-visible {
+  opacity: 0.86;
+  transform: translateY(-1px);
+}
+
+.cf-submit:disabled {
+  opacity: 0.55;
+  cursor: wait;
+  transform: none;
+}
+
+.cf-botcheck {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+}
+
+/* Thank-you state */
+.cf-thanks {
+  display: none;
+  max-width: 44rem;
+}
+
+.cf-thanks.is-active { display: block; }
+
+.cf-thanks h2 {
+  font-family: var(--serif, 'Fraunces', Georgia, serif);
+  font-weight: 350;
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  color: var(--ink, #F6F5F3);
+  margin-bottom: 0.75rem;
+}
+
+.cf-thanks p {
+  color: var(--ink-mute, rgba(246, 245, 243, 0.78));
+  font-size: clamp(1.02rem, 2.2vw, 1.18rem);
+  line-height: 1.65;
+}
+
+.cf-error {
+  display: none;
+  margin-top: 0.75rem;
+  color: var(--coral, #FCA5A5);
+  font-size: 0.9rem;
+}
+
+.cf-error.is-active { display: block; }
+
+/* Small "or email" divider under the form */
+.cf-or {
+  font-family: var(--hand, 'Caveat', cursive);
+  font-size: 1.3rem;
+  color: var(--sage, #86EFAC);
+  transform: rotate(-2deg);
+  display: inline-block;
+  margin: clamp(2.5rem, 6vh, 3.5rem) 0 0.5rem;
+}

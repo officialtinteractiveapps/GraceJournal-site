@@ -376,8 +376,10 @@ body.is-august-countdown .countdown-tape {
 
 .countdown-presave {
   display: none;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  margin-top: 1.35rem;
+  margin-top: 1.55rem;
 }
 
 body.is-presave .countdown-presave {
@@ -403,7 +405,7 @@ body.is-presave .countdown-presave {
 
 .ann-countdown {
   position: absolute;
-  top: 39%;
+  top: 33%;
   left: 0;
   color: var(--yellow);
   font-size: 1.35rem;
@@ -412,10 +414,10 @@ body.is-presave .countdown-presave {
 
 .ann-arrow-countdown {
   position: absolute;
-  top: calc(39% + 1rem);
-  left: 4%;
-  width: 75px;
-  height: 75px;
+  top: calc(33% + 1rem);
+  left: 3%;
+  width: 58px;
+  height: 58px;
   color: var(--yellow);
 }
 
@@ -546,6 +548,72 @@ body.is-presave .countdown-presave {
 .secondary-button:hover,
 .secondary-button:focus-visible {
   transform: translateY(-2px);
+}
+
+/* Official Apple App Store badges (download + pre-order) */
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.store-badge img {
+  display: block;
+  height: 3rem;
+  width: auto;
+}
+
+.store-badge:hover,
+.store-badge:focus-visible {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.store-badge:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.store-badge-large img {
+  height: 3.75rem;
+}
+
+.presave-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.85rem;
+  margin-bottom: 0.9rem;
+  border: 1px solid rgba(134, 239, 172, 0.32);
+  border-radius: 999px;
+  background: rgba(134, 239, 172, 0.1);
+  color: var(--sage);
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.presave-eyebrow::before {
+  content: '';
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--sage);
+  box-shadow: 0 0 0.5rem rgba(134, 239, 172, 0.8);
+}
+
+.presave-line {
+  margin: 0 0 1.15rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.45rem, 3vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 72, 'SOFT' 90;
 }
 
 .platform-line {
